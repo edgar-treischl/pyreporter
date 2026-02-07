@@ -95,3 +95,40 @@ def get_metadata(
         "report": report_template,
         "meta": report_meta,
     }
+
+
+
+
+import pandas as pd
+
+def get_sname(snr: str, meta_snames: pd.DataFrame) -> str:
+    """
+    Get school name based on school number.
+
+    Parameters
+    ----------
+    snr : str
+        School number as a string
+    meta_snames : pd.DataFrame
+        DataFrame containing school metadata with columns 'SNR' and 'SNAME'
+
+    Returns
+    -------
+    str
+        School name, or a default message if not found
+    """
+
+    # Filter for the given school number
+    tmp_name = meta_snames[meta_snames['SNR'] == snr]
+
+    # Check if more than one name is found
+    if len(tmp_name) > 1:
+        raise ValueError("Error in get_sname(): More than one school name found.")
+
+    # If no name is found
+    if len(tmp_name) == 0:
+        return "School name not available."
+
+    # Return the school name (as a string)
+    return tmp_name.iloc[0]['SNAME']
+
