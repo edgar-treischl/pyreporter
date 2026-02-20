@@ -16,25 +16,6 @@ def main():
     ganztag = False
     has_N = ["sus", "elt"]  
 
-
-    limer_connect()
-    sids_df = limer_SIDs(snr=snr, ubb=ubb)
-    sid = sids_df["sid"]
-    print("\nReport template:", sid[0])
-    
-    
-    df = limer_responses(
-    iSurveyID= sid[0],
-    sCompletionStatus="complete"
-    )
-    
-    limer_release()
-
-
-    print(df.head())
-
-
-
     meta_repo = MetaRepository()
     meta_templates = meta_repo.meta_templates
     meta_reports = meta_repo.meta_reports
@@ -46,9 +27,23 @@ def main():
         snr = snr
     )
 
-    print(sname_meta)
+    print("\nReport for:", sname_meta)
 
+    limer_connect()
+    sids_df = limer_SIDs(snr=snr, ubb=ubb)
+    sid = sids_df["sid"]
+    print("\nReport template:", sid[0])
 
+    
+    
+    df = limer_responses(
+    iSurveyID= sid[0],
+    sCompletionStatus="complete"
+    )
+    
+    limer_release()
+
+    print("\nData downloaded:", df.head())
 
 
     # --- Call your metadata helper ---
@@ -63,7 +58,7 @@ def main():
     )
 
     #plots = report_meta['plot'] 
-    print(report_meta)
+    print("\nMeta data:", report_meta)
 
 
 if __name__ == "__main__":
