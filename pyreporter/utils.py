@@ -220,6 +220,8 @@ def get_data(id, surveyls_title, ubb):
 
     # Drop rows where vals is NA
     data = data.dropna(subset=["vals"])
+    data["vars"] = data["vars"].str.replace(r"[\[\]]", "", regex=True)
+
 
     return data
 
