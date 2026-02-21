@@ -23,10 +23,10 @@ data_ubb = pd.DataFrame({
     "anz": [120, 95, 60, 30, 15, 20, 25, 40, 55, 70]
 })
 
-labels = {
+labels = pd.DataFrame({
     "labels": ["Positive", "Negative"],
     "colors": ["#4CAF50", "#F44336"]
-}
+})
 
 
 # -------------------------------------------------
@@ -47,10 +47,11 @@ data_non_ubb = pd.DataFrame({
     "label_n": ["n=110", "n=50", "n=20", "n=130"]
 })
 
-labels_non_ubb = {
+
+labels_non_ubb = pd.DataFrame({
     "labels": ["Agree", "Neutral", "Disagree"],
     "colors": ["#2E7D32", "#9E9E9E", "#C62828"]
-}
+})
 
 
 # -------------------------------------------------
