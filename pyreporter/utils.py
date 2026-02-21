@@ -362,3 +362,27 @@ def get_plotdata(
     plotdata["set"] = str(labelset)
 
     return plotdata
+
+
+from pathlib import Path
+
+def get_directory(snr, syear):
+    """
+    Returns the main directory of the report results.
+
+    Parameters
+    ----------
+    snr : str or int
+        School number.
+    syear : str or int
+        Recent school year from LS Title.
+
+    Returns
+    -------
+    str
+        Absolute path to the report directory.
+    """
+    tmp_dir = Path("res") / f"{snr}_{syear}"
+    # Convert to absolute path
+    tmp_dir = tmp_dir.resolve()
+    return str(tmp_dir)

@@ -139,3 +139,105 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
         )
 
     return p
+
+
+
+import pandas as pd
+from pathlib import Path
+from plotnine import ggsave, ggplot, aes, geom_text, theme_void
+from pyreporter.meta_repository import MetaRepository
+from pyreporter.utils import get_directory
+from pyreporter.plot import create_ggplot
+
+
+def export_plot(meta,
+                snr,
+                audience,
+                report,
+                plot_df,
+                ubb=False,
+                year=None,
+                export=True):
+    """
+    Export a plot for the OES report using a preprocessed plot_df.
+
+    Parameters
+    ----------
+    meta : str
+        Plot name / ID (e.g., 'A12', 'A3a', etc.)
+    snr : str or int
+        School number
+    audience : str
+        Audience type
+    report : str
+        Report template name
+    plot_df : pd.DataFrame
+        Preprocessed long-format plot data with 'vars', 'vals', 'label_short', 'set'
+    ubb : bool
+        Flag passed to create_ggplot()
+    year : str or int
+        Recent school year (used for directory)
+    export : bool
+        If True, saves the plot to PDF; else returns the plot object
+    """
+
+    if plot_df.shape[0] == 0:
+        # fallback empty plot
+        tmp_var_plot = 6
+        tmp_p = (
+            ggplot(pd.DataFrame({'x':[0], 'y':[0]}), aes('x','y'))
+            + geom_text(
+                aes(label="Uppps ... \nhier ist etwas schief gelaufen. \n"
+                          "Bitte kontaktieren Sie: \n'oes@isb.bayern.de'"),
+                size=14
+            )
+            + theme_void()
+        )
+    else:
+        tmp_var_plot = plot_df["vars"].nunique()
+
+        # Optional: filter out "k. A."
+        plot_df = plot_df[plot_df["vals"] != "k. A."]
+
+        # Retrieve item labels from meta_sets for this set
+        meta_repo = MetaRepository()
+        meta_sets = meta_repo.meta_sets
+
+        tmp_set_list = plot_df.groupby("set").size().reset_index(name="anz")["set"].tolist()
+        if not tmp_set_list or tmp_set_list[0] is None:
+            raise ValueError("No set found for plot.")
+        if len(tmp_set_list) > 1:
+            raise ValueError("More than one set found for plot.")
+
+        tmp_set = tmp_set_list[0]
+
+        tmp_item_labels = (
+            meta_sets.loc[meta_sets["set"] == tmp_set]
+            .sort_values("sort", ascending=True)
+            .copy()
+        )
+
+        # Create the plot
+        tmp_p = create_ggplot(plot_df, ubb=ubb, labels=tmp_item_labels)
+
+    if export:
+        # Dynamic height based on number of vars
+        min_height = 4
+        max_height = 8.27
+        height_plot = max_height if tmp_var_plot > 5 else min_height + (max_height - min_height) * (tmp_var_plot - 1) / 4
+
+        # Ensure directory exists
+        tmp_dir = Path(get_directory(snr=snr, syear=year), "plots")
+        tmp_dir.mkdir(parents=True, exist_ok=True)
+
+        # Save plot
+        tmp_p.save(
+            filename=tmp_dir / f"{meta}_plot.pdf",
+            width=11.69,
+            height=height_plot,
+            dpi=300,
+            units="in"
+            )
+        print(f"Export plot: {meta}")
+    else:
+        return tmp_p
