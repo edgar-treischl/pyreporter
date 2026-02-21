@@ -14,6 +14,8 @@ class MetaRepository:
         self.meta_templates = pd.read_csv(data_dir / "meta_templates.csv")
         self.meta_reports = pd.read_csv(data_dir / "meta_reports.csv")
         self.meta_sets = pd.read_csv(data_dir / "meta_sets.csv")
+        self.meta_headers = pd.read_csv(data_dir / "meta_headers.csv")
+
 
         self.meta_snames = pd.read_csv(data_dir / "meta_snames.csv",  dtype={"SNR": str})
 

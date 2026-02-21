@@ -386,3 +386,70 @@ def get_directory(snr, syear):
     # Convert to absolute path
     tmp_dir = tmp_dir.resolve()
     return str(tmp_dir)
+
+
+    
+
+import pandas as pd
+from pyreporter.meta_repository import MetaRepository
+
+
+def match_meta_reports(survey_report, survey_plots):
+    """
+    Match Meta Reports with Lime Survey Reports.
+
+    Parameters
+    ----------
+    survey_report : str
+        Survey report template name
+    survey_plots : list[str]
+        Plot names
+
+    Returns
+    -------
+    pd.DataFrame
+        Matched header report with vars_count
+    """
+
+    meta_repo = MetaRepository()
+    meta_reports = meta_repo.meta_reports
+    meta_headers = meta_repo.meta_headers
+
+
+    # Check if survey_report exists in meta_reports
+    check_missing_template = meta_reports.loc[
+        meta_reports["report"] == survey_report
+    ].shape[0]
+
+    if check_missing_template == 0:
+        raise ValueError(
+            f"No template found for report '{survey_report}' in meta_reports."
+        )
+
+    # Check if all survey_plots are in meta_headers["plot"]
+    missing_plots = set(survey_plots) - set(meta_headers["plot"])
+
+    if len(missing_plots) > 0:
+        raise ValueError(
+            "The following plots are missing in meta_headers: "
+            + ", ".join(missing_plots)
+        )
+
+    # Get counts of distinct vars per plot for the specified survey_report
+    plots_count = (
+        meta_reports.loc[meta_reports["report"] == survey_report]
+        .groupby("plot", as_index=False)["vars"]
+        .nunique()
+        .rename(columns={"vars": "vars_count"})
+    )
+
+    # Join with meta_headers to get the final header report
+    header_report = (
+        meta_headers.loc[
+            (meta_headers["report"] == "Survey") &
+            (meta_headers["plot"].isin(survey_plots))
+        ]
+        .merge(plots_count, on="plot", how="left")
+    )
+
+    return header_report

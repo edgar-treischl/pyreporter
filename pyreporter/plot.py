@@ -154,7 +154,7 @@ import pandas as pd
 from pathlib import Path
 from plotnine import ggsave, ggplot, aes, geom_text, theme_void
 from pyreporter.meta_repository import MetaRepository
-from pyreporter.utils import get_directory
+from pyreporter.utils import get_directory, get_plotdata
 from pyreporter.plot import create_ggplot
 
 
@@ -162,7 +162,7 @@ def export_plot(meta,
                 snr,
                 audience,
                 report,
-                plot_df,
+                data,
                 ubb=False,
                 year=None,
                 export=True):
@@ -179,7 +179,7 @@ def export_plot(meta,
         Audience type
     report : str
         Report template name
-    plot_df : pd.DataFrame
+    data : pd.DataFrame
         Preprocessed long-format plot data with 'vars', 'vals', 'label_short', 'set'
     ubb : bool
         Flag passed to create_ggplot()
@@ -188,6 +188,13 @@ def export_plot(meta,
     export : bool
         If True, saves the plot to PDF; else returns the plot object
     """
+
+    plot_df = get_plotdata(
+        data=data,
+        report_name=report,
+        plot_name=meta,
+        audience=audience
+    )
 
     if plot_df.shape[0] == 0:
         # fallback empty plot
