@@ -43,6 +43,10 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
 
         reversed_levels = list(df["newlable"].cat.categories[::-1])
 
+        breaks = list(reversed(labels["labels"].tolist()))
+        colors = list(reversed(labels["colors"].tolist()))
+
+
         p = (
             ggplot(df, aes(x="newlable", y="anz", fill="vals"))
             + geom_bar(
@@ -58,8 +62,8 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
                 color="black"
             )
             + scale_fill_manual(
-                breaks=list(reversed(labels["labels"])),
-                values=list(reversed(labels["colors"])),
+                breaks=breaks,
+                values=colors,
                 drop=True
             )
             + scale_x_discrete(limits=reversed_levels)
@@ -102,6 +106,10 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
         )
 
         reversed_levels = list(df["newlable"].cat.categories[::-1])
+        #list(reversed(labels["labels"])),
+        #list(reversed(labels["colors"])),
+        breaks = list(reversed(labels["labels"].tolist()))
+        colors = list(reversed(labels["colors"].tolist()))
 
         p = (
             ggplot(df, aes(x="newlable", y="p", fill="vals"))
@@ -118,8 +126,8 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
                 color="black"
             )
             + scale_fill_manual(
-                breaks=list(reversed(labels["labels"])),
-                values=list(reversed(labels["colors"])),
+                breaks=breaks,
+                values=colors,
                 drop=True
             )
             + scale_x_discrete(limits=reversed_levels)
@@ -218,6 +226,12 @@ def export_plot(meta,
         )
 
         # Create the plot
+        # Check which vals are missing in labels
+        #missing = set(plot_df["vals"].unique()) - set(labels["labels"])
+        #print(plot_df.head())
+        #print(tmp_item_labels)
+
+        #print("Missing categories:", missing)
         tmp_p = create_ggplot(plot_df, ubb=ubb, labels=tmp_item_labels)
 
     if export:
