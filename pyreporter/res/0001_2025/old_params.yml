@@ -1,0 +1,17 @@
+d: '3'
+fb: Schülerinnen und Schüler
+header:
+- A1.1 Der Unterricht wird durch Störungen nicht beeinträchtigt.
+- A1.2 Die Lernzeit wird effizient genutzt.
+- A1.3 Das Unterrichtsklima ist lernförderlich.
+meta:
+- A11
+- A12
+- A13
+n: '42'
+name: Testschule
+num_bars:
+- 4
+- 4
+- 4
+snr: '0001'
