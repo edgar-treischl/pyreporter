@@ -5,6 +5,9 @@ description = "Some description."
 authors = [
     {name = "edgar.treischl",email = "edgar.treischl@isb.bayern.de"}
 ]
+packages = [
+    { include = "pyreporter", from = "src" }
+]
 requires-python = ">=3.14"
 dependencies = [
     "pandas (>=3.0.0,<4.0.0)",
