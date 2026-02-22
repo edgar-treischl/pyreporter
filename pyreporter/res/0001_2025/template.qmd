@@ -1,19 +1,24 @@
 ---
 title: "Survey Report"
 format: pdf
-params:
-  snr: 0001
-  name: Bla
-  n: 10
-  d: 2
-  fb: Schülerinnen und Schüler
-  meta: ["A1", "B2"]
-  num_bars: [3, 2]
-  header: ["Header 1", "Header 2"]
 ---
 
+```{python, echo = FALSE}
+#| tags: [parameters]
+#| echo: false
+
+snr="0001"
+name= "Bla"
+n= "10"
+d= "2"
+fb= "Schülerinnen und Schüler"
+meta= ["A11", "B21"]
+num_bars= [4, 3]
+header= ["Header 1", "Header 2"]
+```
+
 ```{python}
-# Function to compute figure height
+#| echo: false
 standard_height = 4
 def compute_height(n):
     if n is None:
@@ -30,13 +35,11 @@ def compute_height(n):
 ```
 
 ```{python, results='asis'}
+#| echo: false
 from IPython.display import Markdown, display
 from pathlib import Path
 
-# Access parameters directly
-meta = params["meta"]
-num_bars = params["num_bars"]
-header = params["header"]
+
 
 # Loop through plots
 for plot_name, bars, head in zip(meta, num_bars, header):

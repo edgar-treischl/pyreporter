@@ -1,12 +1,13 @@
 import subprocess
 from pathlib import Path
-import json
+import yaml
+import pandas as pd
 from pyreporter.utils import get_directory
 
 
-def render_pdf(audience, snr, year, sname, survey_n, duration):
+def render_pdf(audience, snr, year, sname, survey_n, duration, header_report: pd.DataFrame):
 
-    tmp_dir = Path("/Users/edgar/Develop/backend/pyreporter/pyreporter/res") / f"{snr}_{year}"
+    tmp_dir = Path(get_directory(snr=snr, syear=year))
 
     results_map = {
         "elt": "Eltern",
@@ -23,18 +24,26 @@ def render_pdf(audience, snr, year, sname, survey_n, duration):
     params = {
         "snr": snr,
         "name": sname,
-        "n": survey_n,
-        "d": duration,
-        "fb": results
+        "n": str(survey_n),
+        "d": str(duration),
+        "fb": results,
+        "meta": header_report["plot"].tolist(),
+        "num_bars": [int(x) for x in header_report["vars_count"].tolist()],
+        "header": header_report["header2"].tolist(),
     }
+
+    # Write params to YAML file (required by --execute-params)
+    params_file = tmp_dir / "params.yml"
+    with open(params_file, "w", encoding="utf-8") as f:
+        yaml.dump(params, f, allow_unicode=True, default_flow_style=False)
 
     cmd = [
         "quarto",
         "render",
-        str(tmp_dir / "template.qmd"),
+        "template.qmd",
         "--to", "pdf",
         "--output", output_file,
-        "--execute-params", json.dumps(params)
+        "--execute-params", "params.yml"
     ]
 
     print("Running command:", " ".join(cmd))
@@ -42,7 +51,8 @@ def render_pdf(audience, snr, year, sname, survey_n, duration):
     result = subprocess.run(
         cmd,
         capture_output=True,
-        text=True
+        text=True,
+        cwd=str(tmp_dir)
     )
 
     print("STDOUT:\n", result.stdout)

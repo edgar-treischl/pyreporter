@@ -262,3 +262,46 @@ def export_plot(meta,
         print(f"Export plot: {meta}")
     else:
         return tmp_p
+
+
+def create_plotlist(meta_list, snr, year, audience, report, data, ubb=False, export=True):
+    """
+    Export all plots for a report by calling export_plot for each item in meta_list.
+
+    Parameters
+    ----------
+    meta_list : list[str]
+        List of plot names (e.g. ['A11', 'A12', ...]).
+    snr : str
+        School number.
+    year : str or int
+        School year.
+    audience : str
+        Audience type (e.g. 'sus', 'elt').
+    report : str
+        Report template name.
+    data : pd.DataFrame
+        Long-format survey response data.
+    ubb : bool
+        Whether this is a classroom observation report.
+    export : bool
+        If True, saves plots to PDF; if False, returns plot objects.
+
+    Returns
+    -------
+    list
+        List of return values from export_plot (None when export=True).
+    """
+    return list(map(
+        lambda x: export_plot(
+            meta=x,
+            snr=snr,
+            year=year,
+            audience=audience,
+            report=report,
+            data=data,
+            ubb=ubb,
+            export=export
+        ),
+        meta_list
+    ))

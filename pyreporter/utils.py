@@ -382,13 +382,8 @@ def get_directory(snr, syear):
     str
         Absolute path to the report directory.
     """
-    tmp_dir = Path("res") / f"{snr}_{syear}"
-    # Convert to absolute path
-    tmp_dir = tmp_dir.resolve()
+    tmp_dir = Path(__file__).parent / "res" / f"{snr}_{syear}"
     return str(tmp_dir)
-
-
-    
 
 import pandas as pd
 from pyreporter.meta_repository import MetaRepository
