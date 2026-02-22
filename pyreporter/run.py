@@ -36,7 +36,9 @@ def main():
     print("\nSurvey ID:", sid[0])
 
     # --- Get long-format response data ---
-    realdf = get_data(id=str(sid[0]), surveyls_title=sname_meta, ubb=ubb)
+    #realdf = get_data(id=str(sid[0]), surveyls_title=sname_meta, ubb=ubb)
+    realdf = get_data(id = "251539", surveyls_title = "Bla", ubb = False)
+    
     print("\nData downloaded:", realdf.head())
 
     # --- Resolve report template and plot list ---
