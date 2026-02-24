@@ -1,5 +1,4 @@
 import pandas as pd
-import re
 
 from pyreporter.utils import get_metadata, get_sname, get_data, match_meta_reports, get_n, create_directories
 from pyreporter.meta_repository import MetaRepository
@@ -17,7 +16,6 @@ def main():
     ubb = False
     ganztag = False
     has_N = ["sus", "elt"]
-    syear = "2025"
 
     meta_repo = MetaRepository()
     meta_templates = meta_repo.meta_templates
@@ -38,11 +36,7 @@ def main():
 
 
     n_result = get_n(audience=audience, data=sids_df)
-    print("\nCheck type:")
-    print(type(n_result))
     result_n = n_result["tmp.n"]
-    print(type(result_n))
-    print(repr(result_n))
 
     surveyls_title = sids_df["surveyls_title"]
 
@@ -98,15 +92,14 @@ def main():
         survey_report=report_meta['report'],
         survey_plots=report_meta['meta']
     )
-    print("\nHeader report:", header_report.head())
-
+    
     # --- Render final PDF ---
     render_pdf(
         audience=audience,
         snr=snr,
         year=syear,
         sname=sname_meta,
-        survey_n="15",
+        survey_n=result_n,
         duration="2",
         header_report=header_report
     )
