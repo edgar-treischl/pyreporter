@@ -141,6 +141,7 @@ celerybeat.pid
 .envrc
 .venv
 env/
+templates/
 venv/
 ENV/
 env.bak/

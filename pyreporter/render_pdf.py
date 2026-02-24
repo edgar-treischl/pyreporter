@@ -24,7 +24,7 @@ def render_pdf(audience, snr, year, sname, survey_n, duration, header_report: pd
     params = {
         "snr": snr,
         "name": sname,
-        "n": str(survey_n),
+        "n": survey_n,
         "d": str(duration),
         "fb": results,
         "meta": header_report["plot"].tolist(),
@@ -35,7 +35,8 @@ def render_pdf(audience, snr, year, sname, survey_n, duration, header_report: pd
     # Write params to YAML file (required by --execute-params)
     params_file = tmp_dir / "params.yml"
     with open(params_file, "w", encoding="utf-8") as f:
-        yaml.dump(params, f, allow_unicode=True, default_flow_style=False)
+        yaml.safe_dump(params, f, allow_unicode=True, sort_keys=False)
+        #yaml.dump(params, f, allow_unicode=True, default_flow_style=False)
 
     cmd = [
         "quarto",

@@ -1,6 +1,7 @@
 import pandas as pd
+import re
 
-from pyreporter.utils import get_metadata, get_sname, get_data, match_meta_reports
+from pyreporter.utils import get_metadata, get_sname, get_data, match_meta_reports, get_n, create_directories
 from pyreporter.meta_repository import MetaRepository
 from pyreporter.limer import limer_connect, limer_list_surveys, limer_responses, limer_release, limer_n, limer_SIDs
 from pyreporter.plot import create_plotlist
@@ -34,6 +35,33 @@ def main():
     sids_df = limer_SIDs(snr=snr, ubb=ubb)
     sid = sids_df["sid"]
     print("\nSurvey ID:", sid[0])
+
+
+    n_result = get_n(audience=audience, data=sids_df)
+    print("\nCheck type:")
+    print(type(n_result))
+    result_n = n_result["tmp.n"]
+    print(type(result_n))
+    print(repr(result_n))
+
+    surveyls_title = sids_df["surveyls_title"]
+
+    # Extract second set of digits
+    second_set_of_digits = surveyls_title.str.extract(r'^[^_]+_([^_]+)')[0]
+
+    # Get first 4 characters
+    years = second_set_of_digits.str[:4].unique()
+
+    # Extract the single string
+    syear = str(years[0])
+
+    create_directories(
+        snr = snr, 
+        audience = audience, 
+        ubb = ubb, 
+        syear = syear
+    )
+
 
     # --- Get long-format response data ---
     #realdf = get_data(id=str(sid[0]), surveyls_title=sname_meta, ubb=ubb)
@@ -78,7 +106,7 @@ def main():
         snr=snr,
         year=syear,
         sname=sname_meta,
-        survey_n=str(int(sids_df["completed_responses"].sum())),
+        survey_n="15",
         duration="2",
         header_report=header_report
     )

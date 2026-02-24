@@ -382,7 +382,9 @@ def get_directory(snr, syear):
     str
         Absolute path to the report directory.
     """
-    tmp_dir = Path(__file__).parent / "res" / f"{snr}_{syear}"
+    #tmp_dir = Path(__file__).parent / "res" / f"{snr}_{syear}"
+    tmp_dir = f"res/{snr}_{syear}"
+
     return str(tmp_dir)
 
 import pandas as pd
@@ -448,3 +450,137 @@ def match_meta_reports(survey_report, survey_plots):
     )
 
     return header_report
+
+
+import pandas as pd
+import re
+
+def get_n(audience, data):
+    """
+    Get the number of respondents for a survey.
+
+    Parameters
+    ----------
+    audience : str
+        Audience string to match in surveyls_title
+    data : pandas.DataFrame
+        Survey data
+
+    Returns
+    -------
+    dict
+        {
+            "data": DataFrame,
+            "tmp.n": int or str
+        }
+    """
+
+    tmp_sids_df = data.copy()
+
+    # Find indices where surveyls_title contains audience
+    which_n = tmp_sids_df[
+        tmp_sids_df["surveyls_title"].str.contains(audience, regex=True, na=False)
+    ].index
+
+    if len(which_n) == 1:
+        df = tmp_sids_df
+        tmp_n = tmp_sids_df.loc[which_n[0], "completed_responses"]
+
+    else:
+        # In case of several surveys or groups
+        if audience != "all":
+            tmp_sids_df["audience"] = tmp_sids_df["surveyls_title"].str.contains(
+                audience, regex=True, na=False
+            )
+            tmp_sids_df = tmp_sids_df[tmp_sids_df["audience"]]
+
+        # Remove first two underscore-separated parts
+        befragung = tmp_sids_df["surveyls_title"].str.replace(
+            r"^[^_]*_[^_]*_", "", regex=True
+        )
+
+        tmp_sids_df["template"] = "tmpl_" + befragung
+
+        # Select relevant columns from meta_mastertotemplate
+        bfr_grp = meta_mastertotemplate[["template", "bfr_grp"]]
+
+        # Left join
+        df = tmp_sids_df.merge(bfr_grp, on="template", how="left")
+
+        df["n_string"] = (
+            df["completed_responses"].astype(str)
+            + " ("
+            + df["bfr_grp"].astype(str)
+            + ")"
+        )
+
+        tmp_n = ", ".join(df["n_string"].tolist())
+
+    return {
+        "data": df,
+        "tmp.n": str(tmp_n)
+    }
+
+
+from pathlib import Path
+import shutil
+
+
+def create_directories(snr, audience, ubb, syear):
+    """
+    Create directories and copy required template files.
+
+    Parameters
+    ----------
+    snr : str
+        School number
+    audience : str
+        Audience (not used here but kept for compatibility)
+    ubb : bool
+        Whether UBB report
+    syear : str
+        School year
+    """
+
+    # Base directory
+    res_dir = Path("res")
+    res_dir.mkdir(exist_ok=True)
+
+    # School/year directory
+    tmp_dir = res_dir / f"{snr}_{syear}"
+    tmp_dir.mkdir(exist_ok=True)
+
+    # Create plots directories
+    plots_dir = tmp_dir / "plots"
+    plots_dir.mkdir(exist_ok=True)
+
+    #plots_p_dir = plots_dir / "p"
+    #plots_p_dir.mkdir(exist_ok=True)
+
+    # Templates directory (relative to script location)
+    templates_dir = Path(__file__).parent / "templates"
+
+    # Copy correct title graphic
+    if ubb:
+        shutil.copy(
+            templates_dir / "graphic_title_ubb.png",
+            tmp_dir / "graphic_title_ubb.png"
+        )
+    else:
+        shutil.copy(
+            templates_dir / "graphic-title_bfr.png",
+            tmp_dir / "graphic-title_bfr.png"
+        )
+
+    # Copy header image
+    shutil.copy(
+        templates_dir / "header_eva_las.png",
+        tmp_dir / "header_eva_las.png"
+    )
+
+    shutil.copy(
+        templates_dir / "template.qmd",
+        tmp_dir / "template.qmd"
+    )
+
+    return tmp_dir
