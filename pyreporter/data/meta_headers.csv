@@ -1,0 +1,131 @@
+sort,plot,header1,header2,report
+1,A11,A1 Klassenführung,A1.1 Der Unterricht wird durch Störungen nicht beeinträchtigt.,Survey
+2,A12,A1 Klassenführung,A1.2 Die Lernzeit wird effizient genutzt.,Survey
+3,A13,A1 Klassenführung,A1.3 Das Unterrichtsklima ist lernförderlich.,Survey
+4,A21,A2 Nachvollziehbarkeit des Lernangebots,A2.1 Der Unterricht basiert auf Zielen und zu erwerbenden Kompetenzen.,Survey
+5,A22,A2 Nachvollziehbarkeit des Lernangebots,A2.2 Die Inhalte des Unterrichts werden klar und anschaulich dargestellt.,Survey
+6,A32,A3 Variation der Lehr- und Lernmethoden,A3.2 Die Variation der Lehr- und Lernmethoden ist motivierend.,Survey
+7,A41,A4  Schülerorientierung,A4.1 Beiträge der Schülerinnen und Schüler werden in den Unterricht einbezogen.,Survey
+8,A42,A4 Schülerorientierung,A4.2 Alltags- und Anwendungsbezug sind Elemente des Unterrichts.,Survey
+9,A43,A4 Schülerorientierung,A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.,Survey
+10,A51,A5 Berücksichtigung unterschiedlicher Lernvoraussetzungen,A5.1 Der individuelle Lernstand wird erfasst und im Unterricht berücksichtigt.,Survey
+11,A52,A5 Berücksichtigung unterschiedlicher Lernvoraussetzungen,A5.2 Rückmeldungen und Unterstützungsangebote fördern den individuellen Lernprozess.,Survey
+12,A53,A5 Berücksichtigung unterschiedlicher Lernvoraussetzungen,A5.3 Der Unterricht bietet Möglichkeiten der Selbstbestimmung und Selbstorganisation des Lernprozesses.,Survey
+13,A61,A6  Nachhaltiges Lernen,A6.1 Im Unterricht wird Wissen vernetzt.,Survey
+14,A63,A6  Nachhaltiges Lernen,A6.3 Lernstrategien werden im Unterricht vermittelt und angewandt.,Survey
+15,A63b,A6  Nachhaltiges Lernen,A6.3 Lernstrategien werden im Unterricht vermittelt und angewandt.,Survey
+16,A64,A6  Nachhaltiges Lernen,A6.4 Der Unterricht enthält Übungsphasen und sichert die Ergebnisse.,Survey
+17,B11,"B1 Demokratieerziehung, Achtung und Rücksicht",B1.1 Formen der Mitbestimmung und Verantwortungsübernahme werden an der Schule praktiziert.,Survey
+18,B12,"B1 Demokratieerziehung, Achtung und Rücksicht",B1.2 Die Individualität aller wird anerkannt und wertgeschätzt.,Survey
+19,B13,"B1 Demokratieerziehung, Achtung und Rücksicht",B1.3 Es herrscht ein positives Schulklima.,Survey
+20,B13b,"B1 Demokratieerziehung, Achtung und Rücksicht",B1.3 Es herrscht ein positives Schulklima.,Survey
+21,B21,B2  Interessenförderung,B2.1 Die Schule fördert individuelle Interessen und Fähigkeiten der Schülerinnen und Schüler.,Survey
+22,B22,B2  Interessenförderung,B2. 2 Die Schule fördert die Auseinandersetzung mit unterschiedlichen Lebensbereichen.,Survey
+23,B31,B3 Prävention,B3.1 Die Schule legt Wert auf eine gesunde Lebensführung und Umweltbewusstsein.,Survey
+24,B32,B3 Prävention,B3.2 Die Schule fördert die selbstbestimmte Teilhabe der Schülerinnen und Schüler an der digitalen Gesellschaft.,Survey
+25,B33,B3 Prävention,B3.3 Die Schule fördert den konstruktiven Umgang mit Konflikten.,Survey
+26,C11,C1 Organisation der Schule,C1.1 Die Schulleitung nimmt ihre Leitungsfunktion nach innen und außen sichtbar wahr.,Survey
+27,C12,C1 Organisation der Schule,C1.2 Die Schulleitung regelt Zuständigkeiten und Abläufe verbindlich.,Survey
+28,C13,C1 Organisation der Schule,C1.3 Die Schulleitung sorgt für ein geregeltes Wissensmanagement.,Survey
+29,C21,C2 Personalführung,C2.1 Die Schulleitung unterstützt Mitarbeiterinnen und Mitarbeiter in ihrer beruflichen Weiterentwicklung.,Survey
+30,C22,C2 Personalführung,C2.2 Die Schulleitung fördert die Motivation der Mitarbeiterinnen und Mitarbeiter.,Survey
+31,C23,C2 Personalführung,C2.3 Die Schulleitung etabliert Verfahren zur Prävention und Lösung von Konflikten.,Survey
+32,C31,C3 Qualitätsmanagement,C3.1 Die Schulleitung verantwortet die Schul- und Unterrichtsentwicklung als zentrale Führungsaufgabe.,Survey
+33,C33,C3 Qualitätsmanagement,C3.3 Die Schulgemeinschaft wird an der Qualitätsentwicklung beteiligt.,Survey
+34,C34,C3 Qualitätsmanagement,C3.4 Die Schulleitung nutzt Monitoring-Information für die Qualitätsentwicklung.,Survey
+35,D11,D1 Kooperative Unterrichtsentwicklung,D1.1 Das Kollegium entwickelt  den Unterricht unter Berücksichtigung der Kompetenzorientierung zielgerichtet weiter.,Survey
+36,D12,D1 Kooperative Unterrichtsentwicklung,D1.2 Die Maßnahmen zur Unterrichtsentwicklung werden in kollegialer Kooperation umgesetzt.,Survey
+37,D13,D1 Kooperative Unterrichtsentwicklung,D1.3 Die Wirkungen der Unterrichtsentwicklung werden mit Blick auf die Weiterarbeit reflektiert.,Survey
+38,D21,D2 Individuelle und schulische Weiterentwicklung,D2.1 Das Kollegium übernimmt Mitverantwortung für die Schulentwicklung.,Survey
+39,D22,D2 Individuelle und schulische Weiterentwicklung,D2.2 Das Kollegium entwickelt sich beruflich weiter.,Survey
+40,D23,D2 Individuelle und schulische Weiterentwicklung,D2.3 Die Fortbildungsaktivitäten werden auf Schul- und Unterrichtsebene wirksam.,Survey
+41,D31,D3 Zusammenarbeit mit Eltern und Kooperationspartnern,D3.1 Die Schule legt Wert auf eine gute Kooperation mit Eltern und Kooperationspartnern.,Survey
+42,D32,D3 Zusammenarbeit mit Eltern und Kooperationspartnern,D3.2 Die pädagogische Arbeit ist mit dem weiteren Personal an der Schule  und den Kooperationspartnern abgestimmt.,Survey
+43,D33,D3 Zusammenarbeit mit Eltern und Kooperationspartnern,D3.3 Die Schule pflegt Kontakte mit anderen Bildungseinrichtungen und dem nachbarschaftlichen Umfeld.,Survey
+44,W11,W1 Heterogenität,W1.1 Für den Umgang mit Heterogenität bestehen an der Schule zentrale Festlegungen.,Survey
+45,W12,W1 Heterogenität,W1.2 Heterogenität wird als Teil der Schulkultur wertgeschätzt und ist im Schulalltag erkennbar.,Survey
+46,W13,W1 Heterogenität,"W1.3 Die individuellen Bedürfnisse, Stärken und Schwächen der Schülerinnen und Schüler werden festgestellt.",Survey
+47,W14,W1 Heterogenität,W1.4 Das pädagogische Handeln im Unterricht berücksichtigt die Heterogenität der Schülerinnen und Schüler.,Survey
+48,W15,W1 Heterogenität,W1.5 Hinsichtlich der individuellen Förderung wird mit den Eltern bzw. Ausbildungspartnern und den Kooperationspartnern zusammengearbeitet.,Survey
+49,W2leh,W2 Digitalisierung,Nutzung digitaler Geräte - Lehrkräfte,Survey
+50,W2sus,W2 Digitalisierung,Nutzung digitaler Geräte - Schülerinnen und Schüler,Survey
+51,W21,W2 Digitalisierung,W2.1 Die Schulleitung verantwortet die Konzeption und Umsetzung der digitalen Bildung an der Schule.,Survey
+52,W22,W2 Digitalisierung,W2.2 Die Schulleitung befördert ein digital gestütztes Schulmanagement.,Survey
+53,W23,W2 Digitalisierung,W2.3 Das Kollegium nutzt die Potenziale der Digitalisierung in Unterricht und Schule.,Survey
+54,W24,W2 Digitalisierung,W2.4 Zur Gestaltung eines kompetenzorientierten Unterrichts werden digitale Medien eingebunden.,Survey
+55,W25,W2 Digitalisierung,W2.5 Digitale Medien unterstützen die individuelle Förderung und Selbststeuerung der Schülerinnen und Schüler.,Survey
+56,W26,W2 Digitalisierung,W2.6 Die Schule fördert die selbstbestimmte Teilhabe der Schülerinnen und Schüler an der digitalen Gesellschaft.,Survey
+57,W32,W3 Offener Ganztag,W3.2 Das Ganztagsangebot wird als multiprofessionelle Kooperation zur gezielten Förderung der SuS umgesetzt.,Survey
+58,W33,W3 Offener Ganztag,W3.3 Durch die Gestaltung guter Rahmenbedingungen wird der Ganztag als Lebensraum gestärkt.,Survey
+59,W33b,W3 Offener Ganztag,W3.3 Durch die Gestaltung guter Rahmenbedingungen wird der Ganztag als Lebensraum gestärkt.,Survey
+60,W33c,W3 Offener Ganztag,W3.3 Durch die Gestaltung guter Rahmenbedingungen wird der Ganztag als Lebensraum gestärkt.,Survey
+61,W33d,W3 Offener Ganztag,W3.3 Durch die Gestaltung guter Rahmenbedingungen wird der Ganztag als Lebensraum gestärkt.,Survey
+62,W34,W3 Offener Ganztag,W3.4 Das Ganztagsangebot fördert das formale und non-formale Lernen der SuS.,Survey
+63,W34b,W3 Offener Ganztag,W3.4 Das Ganztagsangebot fördert das formale und non-formale Lernen der SuS.,Survey
+64,W3Z,W3 Offener Ganztag,Zufriedenheit der Eltern,Survey
+65,ZA,Zufriedenheit,Ausbildungspartner,Survey
+66,ZE,Zufriedenheit,Eltern,Survey
+67,ZL,Zufriedenheit,Lehrkräfte,Survey
+68,ZS,Zufriedenheit,Schülerinnen und Schüler,Survey
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA
+1,Zeit,Zeit,NA,UBB
+2,A1,A1 Klassenführung,NA,UBB
+3,A1a,A1.1 Der Unterricht wird durch Störungen nicht beeinträchtigt.,NA,UBB
+4,A1b,A1.2 Die Lernzeit wird effizient genutzt.,NA,UBB
+5,A1c,A1.3 Das Unterrichtsklima ist lernförderlich.,NA,UBB
+6,A2,A2 Nachvollziehbarkeit des Lernangebots,NA,UBB
+7,A2a,A2.1 Der Unterricht basiert auf Zielen und zu erwerbenden Kompetenzen.,NA,UBB
+8,A2b,A2.2 Die Inhalte des Unterrichts werden klar und anschaulich dargestellt.,NA,UBB
+9,A4,A4  Schülerorientierung,NA,UBB
+10,A4a,A4.1 Beiträge der Schülerinnen und Schüler werden in den Unterricht einbezogen.,NA,UBB
+11,A4b,A4.2 Alltags- und Anwendungsbezug sind Elemente des Unterrichts.,NA,UBB
+12,A4c,A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.,NA,UBB
+13,A4d,A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.,NA,UBB
+14,A6,A6  Nachhaltiges Lernen,NA,UBB
+15,A6a,Lernstrategien,NA,UBB
+16,A6b,A6.1 Im Unterricht wird Wissen vernetzt. ,NA,UBB
+17,A6c,A6.2 Der Unterricht bietet herausfordernde Aufgaben.,NA,UBB
+18,A6d,A6.4 Der Unterricht enthält Übungsphasen und sichert die Ergebnisse.,NA,UBB
+19,W14a,W1 :  Das pädagogische Handeln im Unterricht berücksichtigt die Heterogenität der Schülerinnen und Schüler (W1.4).,NA,UBB
+20,A3a,A3.1 Die Lehr- und Lernmethoden wechseln angemessen ab. Unterrichtsmethoden,NA,UBB
+21,A3b,A3.1 Die Lehr- und Lernmethoden wechseln angemessen ab: Sozialformen,NA,UBB
+22,A3c,A3.1 Die Lehr- und Lernmethoden wechseln angemessen ab:  Aufgabentypen,NA,UBB
+23,A3d,A3.1 Die Lehr- und Lernmethoden wechseln angemessen ab: Rhythmisierende Elemente,NA,UBB
+24,W2a,W2 Digitalisierung: Nutzung,NA,UBB
+25,W2b,W2 Schülerinnen und Schüler nutzen digitale Medien zum …,NA,UBB
+26,W2c,W2 Geräte,NA,UBB
+27,W24a,W2.4 Zur Gestaltung eines kompetenzorientierten Unterrichts werden digitale Medien eingebunden.,NA,UBB
+28,W25a,W2.5 Digitale Medien unterstützen die individuelle Förderung und Selbststeuerung der Schülerinnen und Schüler.,NA,UBB
+29,W26a,W2.6 Die Schule fördert die selbstbestimmte Teilhabe der Schülerinnen und Schüler an der digitalen Gesellschaft.,NA,UBB

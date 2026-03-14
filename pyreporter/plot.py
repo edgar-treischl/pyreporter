@@ -16,7 +16,7 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
     df = data.copy()
 
     # -------------------------------------------------
-    # 🔧 Ensure numeric columns are numeric
+    # Ensure numeric columns are numeric
     # -------------------------------------------------
     for col in ["anz", "p"]:
         if col in df.columns:
@@ -30,7 +30,7 @@ def create_ggplot(data: pd.DataFrame, ubb: bool, labels: dict):
     )
 
     # -------------------------------------------------
-    # UBB CASE
+    # UBB
     # -------------------------------------------------
     if ubb:
 
@@ -167,26 +167,26 @@ def export_plot(meta,
                 year=None,
                 export=True):
     """
-    Export a plot for the OES report using a preprocessed plot_df.
+    Export a plot for the OES report.
 
     Parameters
     ----------
     meta : str
-        Plot name / ID (e.g., 'A12', 'A3a', etc.)
+        Plot name / ID (e.g., 'A12', 'A3a', etc.).
     snr : str or int
-        School number
+        School number.
     audience : str
-        Audience type
+        Audience type.
     report : str
-        Report template name
+        Report template name.
     data : pd.DataFrame
-        Preprocessed long-format plot data with 'vars', 'vals', 'label_short', 'set'
+        Preprocessed long-format plot data with 'vars', 'vals', 'label_short', 'set'.
     ubb : bool
-        Flag passed to create_ggplot()
+        Flag passed if UBB or not.
     year : str or int
-        Recent school year (used for directory)
+        School year (used for directory).
     export : bool
-        If True, saves the plot to PDF; else returns the plot object
+        If True, saves the plot to PDF; else returns the plot.
     """
 
     plot_df = get_plotdata(

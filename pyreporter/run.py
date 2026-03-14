@@ -1,5 +1,3 @@
-import pandas as pd
-
 from pyreporter.utils import get_metadata, get_sname, get_data, match_meta_reports, get_n, create_directories
 from pyreporter.meta_repository import MetaRepository
 from pyreporter.limer import limer_connect, limer_list_surveys, limer_responses, limer_release, limer_n, limer_SIDs

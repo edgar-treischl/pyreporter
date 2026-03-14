@@ -1,0 +1,54 @@
+set,code,labels,sort,colors,text_color,timestamp
+set01,1,stimmt gar nicht,1,#7b3294,white,2025-01-15T10:46:53Z
+set01,2,stimmt eher nicht,2,#c2a5cf,black,2025-01-15T10:46:53Z
+set01,3,stimmt zum Teil,3,#f7f7f7,black,2025-01-15T10:46:53Z
+set01,4,stimmt eher,4,#a6dba0,black,2025-01-15T10:46:53Z
+set01,5,stimmt ganz genau,5,#008837,white,2025-01-15T10:46:53Z
+set01,6,weiß nicht,6,#d0cece,black,2025-01-15T10:46:53Z
+set03,1,gar nicht zufrieden,1,#7b3294,white,2025-01-15T10:46:53Z
+set03,2,eher nicht zufrieden,2,#c2a5cf,black,2025-01-15T10:46:53Z
+set03,3,eher zufrieden,3,#a6dba0,black,2025-01-15T10:46:53Z
+set03,4,sehr zufrieden,4,#008837,white,2025-01-15T10:46:53Z
+set03,5,weiß nicht,5,#d0cece,black,2025-01-15T10:46:53Z
+set04,0,nicht erfüllt,1,#ca0020,white,2025-01-15T10:46:53Z
+set04,1,eher nicht erfüllt,2,#f4a582,black,2025-01-15T10:46:53Z
+set04,2,"teils, teils",3,#f5f5f5,black,2025-01-15T10:46:53Z
+set04,3,eher erfüllt,4,#92c5de,black,2025-01-15T10:46:53Z
+set04,4,voll und ganz erfüllt,5,#0571b0,white,2025-01-15T10:46:53Z
+set05,1,schwach ausgeprägt,1,#ef8a62,black,2025-01-15T10:46:53Z
+set05,2,"teils, teils",2,#f5f5f5,black,2025-01-15T10:46:53Z
+set05,3,stark ausgeprägt,3,#67a9cf,black,2025-01-15T10:46:53Z
+set05,0,nicht beobachtbar,4,#bebebe,black,2025-01-15T10:46:53Z
+set06,1,20 Minuten,1,NA,NA,2025-01-15T10:46:53Z
+set06,2,45 Minuten,2,NA,NA,2025-01-15T10:46:53Z
+set07,1,Stundenanfang,1,#1f78b4,white,2025-01-15T10:46:53Z
+set07,2,Stundenmitte,2,#a6cee3,black,2025-01-15T10:46:53Z
+set07,3,Stundenende,3,#b2df8a,black,2025-01-15T10:46:53Z
+set08,Y,Ja,1,#b2df8a,black,2025-01-15T10:46:53Z
+set09,1,ein Gerät,1,#1f78b4,white,2025-01-15T10:46:53Z
+set09,2,mehrere Geräte,2,#a6cee3,black,2025-01-15T10:46:53Z
+set09,3,Geräte für alle SuS,3,#b2df8a,black,2025-01-15T10:46:53Z
+set10,1,keine Aufgaben,1,#1f78b4,white,2025-01-15T10:46:53Z
+set10,2,einander ähnlich,2,#a6cee3,black,2025-01-15T10:46:53Z
+set10,3,variationsreich,3,#b2df8a,black,2025-01-15T10:46:53Z
+set11,1,...täglich oder mehrmals täglich,1,#006d2c,white,2025-01-15T10:46:53Z
+set11,2,...mehrmals pro Woche,2,#2ca25f,black,2025-01-15T10:46:53Z
+set11,3,...einmal pro Woche,3,#66c2a4,black,2025-01-15T10:46:53Z
+set11,4,...mehrmals pro Monat,4,#99d8c9,black,2025-01-15T10:46:53Z
+set11,5,...einmal pro Monat oder seltener,5,#ccece6,black,2025-01-15T10:46:53Z
+set11,6,...nie,6,#edf8fb,black,2025-01-15T10:46:53Z
+set11,7,weiß nicht,7,#d0cece,black,2025-01-15T10:46:53Z
+set12,1,in fast jeder Stunde,1,#238b45,white,2025-01-15T10:46:53Z
+set12,2,in den meisten Stunden,2,#66c2a4,black,2025-01-15T10:46:53Z
+set12,3,in einigen Stunden,3,#b2e2e2,black,2025-01-15T10:46:53Z
+set12,4,fast nie oder nie,4,#edf8fb,black,2025-01-15T10:46:53Z
+set12,5,weiß nicht,5,#d0cece,black,2025-01-15T10:46:53Z
+set14,2,Nein,1,#1f78b4,white,2025-01-15T10:46:53Z
+set14,3,"Ja, nur durch LK",2,#a6cee3,black,2025-01-15T10:46:53Z
+set14,4,"Ja, nur durch SuS",3,#b2df8a,black,2025-01-15T10:46:53Z
+set14,5,"Ja, durch SuS und LK",4,#33a02c,black,2025-01-15T10:46:53Z
+set15,2,Nein,2,#1f78b4,white,2025-01-15T10:46:53Z
+set15,1,Ja,1,#b2df8a,black,2025-01-15T10:46:53Z
+set16,1,schwach ausgeprägt,1,#ef8a62,black,2025-01-15T10:46:53Z
+set16,2,"teils, teils",2,#f7f7f7,black,2025-01-15T10:46:53Z
+set16,3,stark ausgeprägt,3,#67a9cf,black,2025-01-15T10:46:53Z
