@@ -1,5 +1,4 @@
 ---
-title: "Survey Report"
 format: pdf
 execute:
   echo: false
@@ -34,6 +33,19 @@ def compute_height(n):
     else:
         h = standard_height
     return max(h, 3)
+```
+
+
+```{=tex}
+\begin{figure}[h!]
+\raggedleft
+\includegraphics[width=0.55\textwidth]{header_isb.png}
+\vspace{10mm}
+\end{figure}
+\begin{center}
+\section*{\Huge Ergebnisse aus der Befragung\newline zur Externen Evaluation} 
+\end{center}
+\vspace{10mm}  % Optional additional space
 ```
 
 

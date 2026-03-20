@@ -1,6 +1,17 @@
-.PHONY: run clean help
+.PHONY: run clean
+
+# --- Default values (can be overridden) ---
+SNR ?= 0001
+STYPE ?= gy
+AUDIENCE ?= sus
+UBB ?= False
+GANZTAG ?= False
+HAS_N ?= sus,elt
+YEAR ?= 2025
 
 run:
+	SNR=$(SNR) STYPE=$(STYPE) AUDIENCE=$(AUDIENCE) \
+	UBB=$(UBB) GANZTAG=$(GANZTAG) HAS_N=$(HAS_N) YEAR=$(YEAR) \
 	poetry run python -m pyreporter.run
 
 clean:
@@ -10,7 +21,6 @@ clean:
 	else \
 		echo "res/ directory does not exist."; \
 	fi
-
 help:
 	@echo "Available commands:"
 	@echo "  make run     Run the report pipeline"

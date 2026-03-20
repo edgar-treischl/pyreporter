@@ -574,8 +574,8 @@ def create_directories(snr, audience, ubb, syear):
 
     # Copy header image
     shutil.copy(
-        templates_dir / "header_eva_las.png",
-        tmp_dir / "header_eva_las.png"
+        templates_dir / "header_isb.png",
+        tmp_dir / "header_isb.png"
     )
 
     if ubb:
