@@ -1,4 +1,4 @@
-from pyreporter.utils import get_metadata, get_sname, get_data, match_meta_reports, get_n, create_directories
+from pyreporter.utils import get_metadata, get_sname, get_data, match_meta_reports, get_n, create_directories, get_directory, clean_files
 from pyreporter.meta_repository import MetaRepository
 from pyreporter.limer import limer_connect, limer_list_surveys, limer_responses, limer_release, limer_n, limer_SIDs
 from pyreporter.plot import create_plotlist
@@ -101,6 +101,9 @@ def main():
         duration="2",
         header_report=header_report
     )
+
+    tmpdir = get_directory(snr = snr, syear = syear)
+    clean_files(where = tmpdir)
 
 
 if __name__ == "__main__":

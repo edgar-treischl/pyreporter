@@ -584,3 +584,57 @@ def create_directories(snr, audience, ubb, syear):
     )
 
     return tmp_dir
+
+
+
+from pathlib import Path
+import re
+import shutil
+
+def clean_files(where, not_pattern=r"\.(pdf|csv)$"):
+    """
+    Clean temporary files except specified types.
+
+    Parameters
+    ----------
+    where : str | Path
+        The directory to clean.
+    not_pattern : str, optional
+        Regex pattern of file extensions to keep (default: r"\\.(pdf|csv)$")
+
+    Returns
+    -------
+    str
+        Message indicating which files were kept.
+    """
+    base = Path(where)
+    keep_regex = re.compile(not_pattern, re.IGNORECASE)
+
+    # All files recursively
+    all_files = [p for p in base.rglob("*") if p.is_file()]
+
+    # Delete files not matching pattern
+    for file in all_files:
+        if not keep_regex.search(file.name):
+            try:
+                file.unlink()
+            except FileNotFoundError:
+                pass
+
+    # Remove "plots" directory if it exists
+    plots_dir = base / "plots"
+    if plots_dir.exists():
+        shutil.rmtree(plots_dir, ignore_errors=True)
+
+    # Remaining files (relative paths)
+    remaining = [
+        str(p.relative_to(base))
+        for p in base.rglob("*")
+        if p.is_file()
+    ]
+
+    message = f"Cleaned up temporary files, but not: {remaining}"
+    print(message)
+    return message
+
+
