@@ -3,10 +3,10 @@
 # --- Default values (can be overridden) ---
 SNR ?= 0001
 STYPE ?= gy
-AUDIENCE ?= sus
+AUDIENCE ?= leh
 UBB ?= False
 GANZTAG ?= False
-HAS_N ?= sus,elt
+HAS_N ?= sus,leh
 YEAR ?= 2025
 
 run:

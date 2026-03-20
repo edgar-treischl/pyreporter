@@ -1,5 +1,7 @@
 from typing import List, Optional
+import json
 import os
+import pandas as pd
 
 from pyreporter.utils import (
     get_metadata, get_sname, get_data, match_meta_reports, get_n,
@@ -17,9 +19,10 @@ DEFAULTS = {
     "audience": "sus",
     "ubb": False,
     "ganztag": False,
-    "has_N": ["sus", "elt"],
+    "has_N": ["sus", "leh"],
     "year": "2025"
 }
+
 
 def print_config(
     snr: str,
@@ -30,15 +33,18 @@ def print_config(
     has_N: List[str],
     year: str
 ) -> None:
-    """Print the effective configuration for this run."""
+    """Print the effective configuration as JSON for easy reading."""
+    config = {
+        "SNR": snr,
+        "SType": stype,
+        "Audience": audience,
+        "UBB": ubb,
+        "Ganztag": ganztag,
+        "Has_N": has_N,
+        "Year": year
+    }
     print("\n--- Effective Configuration ---")
-    print(f"SNR      : {snr}")
-    print(f"SType    : {stype}")
-    print(f"Audience : {audience}")
-    print(f"UBB      : {ubb}")
-    print(f"Ganztag  : {ganztag}")
-    print(f"Has_N    : {has_N}")
-    print(f"Year     : {year}")
+    print(json.dumps(config, indent=4))
     print("-------------------------------\n")
 
 def main(
@@ -69,7 +75,7 @@ def main(
     limer_connect()
     sids_df = limer_SIDs(snr=snr, ubb=ubb)
     sid = sids_df["sid"]
-    print("\nSurvey ID:", sid[0])
+    print("\nSurvey ID:", sid)
 
     # --- N results ---
     n_result = get_n(audience=audience, data=sids_df)
@@ -83,7 +89,16 @@ def main(
     create_directories(snr=snr, audience=audience, ubb=ubb, syear=syear)
 
     # --- Response data ---
-    realdf = get_data(id="251539", surveyls_title="Bla", ubb=False)
+    #realdf = get_data(id="251539", surveyls_title="Bla", ubb=False)
+    
+    dataframes = [
+    get_data(id=sid, surveyls_title=surveyls_title, ubb=ubb)
+    for sid, title in zip(sids_df["sid"], sids_df["surveyls_title"])
+    ]
+
+    # Combine all into one dataframe
+
+    realdf = pd.concat(dataframes, ignore_index=True)
     print("\nData downloaded:", realdf.head())
 
     # --- Report metadata ---

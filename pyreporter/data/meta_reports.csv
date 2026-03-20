@@ -236,10 +236,10 @@ rpt_ubb_ms_p1,A422ms,A4b,A4.2.2a Die von der LK ausgewählten Inhalte und Lernau
 rpt_ubb_fb_p1,A422ms,A4b,A4.2.2a Die von der LK ausgewählten Inhalte und Lernaufgaben haben einen Bezug zur Lebens- oder Berufswirklichkeit.,A4.2.2a Inhalte und Lernaufgaben mit Bezug zur Lebens- o. Berufswirklichkeit,set16,ubb
 rpt_ubb_p1,A422ms,A4b,A4.2.2a Die von der LK ausgewählten Inhalte und Lernaufgaben haben einen Bezug zur Lebens- oder Berufswirklichkeit.,A4.2.2a Inhalte und Lernaufgaben mit Bezug zur Lebens- o. Berufswirklichkeit,set16,ubb
 rpt_ubb_gs_p1,A422gs,A4b,A4.2.2a Die von der LK ausgewählten Inhalte und Lernaufgaben haben einen Bezug zur Lebens- oder Berufswirklichkeit.,A4.2.2a Inhalte und Lernaufgaben mit Bezug zur Lebenswelt,set16,ubb
-rpt_ubb_ms_p1,A422,A4b,A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug,A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
-rpt_ubb_gs_p1,A422,A4b,A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug,A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
-rpt_ubb_fb_p1,A422,A4b,A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug,A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
-rpt_ubb_p1,A422,A4b,A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug,A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
+rpt_ubb_ms_p1,A422,A4b,"A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug",A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
+rpt_ubb_gs_p1,A422,A4b,"A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug",A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
+rpt_ubb_fb_p1,A422,A4b,"A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug",A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
+rpt_ubb_p1,A422,A4b,"A4.2.2b 	Die von der Lehrkraft präsentierten Inhalte und Lernaufgaben haben einen Handlungsbezug",A4.2.2b Inhalte und Lernaufgaben haben einen Handlungsbezug.,set16,ubb
 rpt_ubb_fz_p1,A422gs,A4b,NA,A4.2.2 GS_Inhalte und Lernaufgaben mit Bezug zur Lebenswelt,set16,ubb
 rpt_ubb_gm_p1,A422gs,A4b,NA,A4.2.2 GS_Inhalte und Lernaufgaben mit Bezug zur Lebenswelt,set16,ubb
 rpt_ubb_fz_p1,A422ms,A4b,NA,A4.2.2 MS_Inhalte und Lernaufgaben mit Bezug zur Lebens- oder Berufswirklichkeit,set16,ubb
@@ -250,12 +250,12 @@ rpt_ubb_ms_p1,A43,A4,"<strong><span style=""font-size:16px;"">A4.3 Der Unterrich
 rpt_ubb_fz_p1,A43,A4,"<strong><span style=""font-size:16px;"">A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.</span></strong>",A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.,set04,ubb
 rpt_ubb_fb_p1,A43,A4,"<strong><span style=""font-size:16px;"">A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.</span></strong>",A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.,set04,ubb
 rpt_ubb_gm_p1,A43,A4,"<strong><span style=""font-size:16px;"">A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.</span></strong>",A4.3 Der Unterricht ermöglicht das Erleben eigener Kompetenz.,set04,ubb
-rpt_ubb_gs_p1,A431a,A4c,NA,A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigk. u. Ausbau d. Stärken.,set05,ubb
-rpt_ubb_fb_p1,A431a,A4c,NA,A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigk. u. Ausbau d. Stärken.,set05,ubb
-rpt_ubb_p1,A431a,A4c,NA,A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigkeiten,set05,ubb
-rpt_ubb_fz_p1,A431a,A4c,NA,A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigkeiten,set05,ubb
-rpt_ubb_ms_p1,A431a,A4c,NA,A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigkeiten,set05,ubb
-rpt_ubb_gm_p1,A431a,A4c,NA,A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigk. (GS_ u. z. Ausbau ihrer Stärken],set05,ubb
+rpt_ubb_gs_p1,A431a,A4c,NA,"A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigk. u. Ausbau d. Stärken.",set05,ubb
+rpt_ubb_fb_p1,A431a,A4c,NA,"A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigk. u. Ausbau d. Stärken.",set05,ubb
+rpt_ubb_p1,A431a,A4c,NA,"A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigkeiten",set05,ubb
+rpt_ubb_fz_p1,A431a,A4c,NA,"A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigkeiten",set05,ubb
+rpt_ubb_ms_p1,A431a,A4c,NA,"A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigkeiten",set05,ubb
+rpt_ubb_gm_p1,A431a,A4c,NA,"A4.3.1a 	 LK ermutigt SuS z. Überwinden von Schwierigk. (GS_ u. z. Ausbau ihrer Stärken]",set05,ubb
 rpt_ubb_fb_p1,A431b,A4c,NA,A4.3.1b Mitwirken bei komplexen Kommunikationssituationen,set05,ubb
 rpt_ubb_p1,A431b,A4c,NA,"A4.3.1b SuS haben Gelegenheit, sich differenziert zu äußern.",set05,ubb
 rpt_ubb_gs_p1,A431b,A4c,NA,"A4.3.1b SuS haben Gelegenheit, sich präzise und themenbez. zu äußern.",set05,ubb
@@ -827,8 +827,8 @@ rpt_leh_fb_p1,A423W243l,A42,NA,"Nutze digitale Medien im Unterricht, um auf die 
 rpt_leh_fb_p1,A423W243l,W24,NA,"Nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der SuS Bezug zu nehmen",set01,leh
 ms_p2,B334W125b,B33,"Wenn es Konflikte gibt, trägt die Schule zu einer schnellen Lösung bei.","Wenn es Konflikte gibt, trägt die Schule zu einer schnellen Lösung bei.",set01,elt
 gs_p3,A133,A13,"<span style=""font-size:28px;""><b><span style=""line-height:115%;""><span style=""font-family:Calibri, sans-serif;"">Meine Klassenlehrerin oder mein Klassenlehrer ist fair und gerecht zu mir.</span></span></b></span>",Die Lehrkraft ist fair und gerecht zu mir,set01,sus
-rpt_leh_p1,A423W243l,A42,"Ich nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der Schülerinnen und Schüler Bezug zu nehmen.","Nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der SuS Bezug zu nehmen",set01,leh
-rpt_leh_p1,A423W243l,W24,NA,"Nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der SuS Bezug zu nehmen",set01,leh
+rpt_leh_p1,A423W243,A42,"Ich nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der Schülerinnen und Schüler Bezug zu nehmen.","Nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der SuS Bezug zu nehmen",set01,leh
+rpt_leh_p1,A423W243,W24,NA,"Nutze digitale Medien im Unterricht, um auf die Alltagserfahrungen der SuS Bezug zu nehmen",set01,leh
 rpt_all_bq_p1,A212d,A21,"Die Berufsschule vermittelt den Auszubildenden grundlegende Arbeitshaltungen (z. B. Pünktlichkeit, Zuverlässigkeit).",Die Berufsschule vermittelt den Auszubildenden grundlegende Arbeitshaltungen.,set01,aus
 gm_p3,A133,A13,GS_Die Lehrkraft ist fair und gerecht zu mir.,GS_Die Lehrkraft ist fair und gerecht zu mir.,set01,sus
 gm_p4,D313W154,D31,"Wir werden informiert, wie wir unseren Sohn/unsere Tochter beim Lernen für die Schule am besten unterstützen können.","Wir werden informiert, wie wir Sohn/Tochter beim Lernen für die Schule am besten unterstützen können.",set01,elt
@@ -1998,7 +1998,7 @@ rpt_leh_gs_p2,B113,B11,"Schülerinnen und Schüler haben bei uns viele Möglichk
 rpt_all_p2,Z4E,ZE,Mit dem Zustand der Räumlichkeiten bin ich ...,Mit dem Zustand der Räumlichkeiten bin ich ...,set03,elt
 gs_p2,B113,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
 rpt_leh_fb_p1,B113l,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
-rpt_leh_p1,B113l,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
+rpt_leh_p1,B113,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
 rpt_leh_p2,B113l,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
 rpt_sus_bq_p1,B113m,B11,"Es gibt an unserer Schule Aktionen, Veranstaltungen oder Projekte, die wir selbst organisieren.","Es gibt an unserer Schule Aktionen, Veranstaltungen, ..., die wir selbst organisieren.",set01,sus
 rpt_sus_fb_p1,B113m,B11,"Es gibt an unserer Schule Aktionen, Veranstaltungen oder Projekte, die wir selbst organisieren.","Es gibt an unserer Schule Aktionen, Veranstaltungen, ..., die wir selbst organisieren.",set01,sus
@@ -2077,7 +2077,7 @@ rpt_sus_fz_p2,A111bm,A11,"<p><span style=""font-size:28px;""><b><span style=""li
 gs_p4,A515W143b,A51,In meinem Unterricht bekommen die einzelnen Schülerinnen und Schüler oft verschiedene Aufgaben.,Im Unterricht bekommen die einzelnen SuS oft verschiedene Aufgaben.,set01,leh
 gs_p3,A522W145,W14,NA,"Die Lehrkraft erklärt Sachen noch einmal, wenn jemand etwas nicht verstanden hat.",set01,sus
 gm_p1,A633e,A63b,"Mein Sohn/meine Tochter erfährt in der Schule, wie man gut für die Schule lernen und üben kann.","Tochter/Sohn erfährt in der Schule, wie man gut für die Schule lernen und üben kann.",set01,elt
-rpt_leh_p1,B123l,B12,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,set01,leh
+rpt_leh_p1,B123,B12,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,set01,leh
 rpt_leh_p2,B123l,B12,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,set01,leh
 gm_p3,A633e,A63b,"Tochter/Sohn erfährt in der Schule, wie man gut für die Schule lernen und üben kann.","Tochter/Sohn erfährt in der Schule, wie man gut für die Schule lernen und üben kann.",set01,elt
 ms_p1,A633e,A63b,"Mein Sohn/meine Tochter erfährt in der Schule, wie man gut für die Schule lernen und üben kann.","Tochter/Sohn erfährt in der Schule, wie man gut für die Schule lernen und üben kann.",set01,elt
@@ -2678,8 +2678,8 @@ rpt_all_fz_p1,B221b,B22,"Die Schülerinnen und Schüler können gelegentlich mit
 gm_p3,A641m,A64,"MS_Ich bekomme genug Zeit, um zu üben, bis ich es kann.","MS_Ich bekomme genug Zeit, um zu üben, bis ich es kann.",set01,sus
 rpt_all_fz_p1,B223,B22,Unsere Schule unterstützt die berufliche Orientierung der Schülerinnen und Schüler mit vielfältigen Angeboten.,Die Schule unterstützt die berufliche Orientierung der Schülerinnen/Schüler mit vielfältigen Angeboten.,set01,leh
 gm_p3,A642,A64,MS_Unsere Lehrkraft bespricht mit uns die Hausaufgaben.,MS_Unsere Lehrkraft bespricht mit uns die Hausaufgaben.,set01,sus
-rpt_leh_p1,B322W262l,B32,Ich thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten.,Thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten,set01,leh
-rpt_leh_p1,B322W262l,W26,NA,Thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten,set01,leh
+rpt_leh_p1,B322W262,B32,Ich thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten.,Thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten,set01,leh
+rpt_leh_p1,B322W262,W26,NA,Thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten,set01,leh
 rpt_leh_p2,B322W262l,B32,Ich thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten.,Thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten,set01,leh
 rpt_leh_p2,B322W262l,W26,NA,Thematisiere im Unterricht die Regeln im Umgang mit den eigenen und fremden Daten,set01,leh
 rpt_sus_p1,B131W124A,W12,NA,Wir gehen an der Schule respektvoll miteinander um.,set01,sus
@@ -2745,12 +2745,12 @@ rpt_leh_gs_p2,B323W263l,B32,"Ich weise die Schülerinnen und Schüler darauf hin
 rpt_all_fb_p1,A123A,A12,Im Unterricht wird keine Zeit vertrödelt.,Im Unterricht wird keine Zeit vertrödelt.,set01,sus
 rpt_leh_gs_p2,B323W263l,W26,NA,"Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
 rpt_all_p2,B113l,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
-rpt_leh_p1,B323W263l,B32,"Ich weise die Schülerinnen und Schüler darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten.","Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
+rpt_leh_p1,B323W263,B32,"Ich weise die Schülerinnen und Schüler darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten.","Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
 rpt_all_p1,A432,A43,"Im Unterricht wird niemand ausgelacht, der einen Fehler macht.","Im Unterricht wird niemand ausgelacht, der einen Fehler macht.",set01,sus
 rpt_all_bq_p5,A611,A61,"Die Lehrkraft erklärt uns, wie alte und neue Themen miteinander zusammenhängen.","Die Lehrkraft erklärt uns, wie alte und neue Themen miteinander zusammenhängen.",set01,sus
 rpt_leh_bq_p1,A611a,A61,"An unserer Schule wird besonderer Wert darauf gelegt, die betrieblichen Erfahrungen der Schülerinnen und Schüler in den Unterricht zu integrieren.","Die Schule legt besond. Wert darauf, betriebl. Erfahrungen der SuS in d. Unterricht zu integrieren.",set01,leh
 rpt_all_fb_p1,A432,A43,"Im Unterricht wird niemand ausgelacht, der einen Fehler macht.","Im Unterricht wird niemand ausgelacht, der einen Fehler macht.",set01,sus
-rpt_leh_p1,B323W263l,W26,NA,"Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
+rpt_leh_p1,B323W263,W26,NA,"Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
 rpt_leh_p2,B323W263l,B32,"Ich weise die Schülerinnen und Schüler darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten.","Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
 rpt_leh_p2,B323W263l,W26,NA,"Weise SuS darauf hin, was sie beachten müssen, wenn sie digitale Inhalte verwenden und verbreiten",set01,leh
 rpt_all_p1,B223b,B22,Die Einblicke in die berufliche Praxis (z. B. im Rahmen von Praktika) haben mir bei der Berufs- oder Studienwahl geholfen.,Die Einblicke in die berufliche Praxis haben mir bei der Berufs- oder Studienwahl geholfen.,set01,sus
@@ -2810,9 +2810,9 @@ gs_p2,B323W263l,W26,NA,"Weise SuS darauf hin, was sie beachten müssen, wenn sie
 rpt_leh_gs_p2,B324W264l,W26,NA,"Bringe SuS bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können",set01,leh
 rpt_all_fz_p2,A521W144m,A52,"<span style=""font-size:28px;""><b><span style=""line-height:115%;""><span style=""font-family:Calibri, sans-serif;"">Meine Klassenlehrerin oder mein Klassenlehrer zeigt mir, wie ich besser werden kann (7-10).</span></span></b></span>","MS_Die Lehrkraft zeigt mir, wie ich besser werden kann.",set01,sus
 rpt_all_fz_p2,B312a,B31,"An unserer Schule sind Präventionsprogramme für Schülerinnen und Schüler etabliert (z. B. bezüglich Gewalt, Sexualität, Drogen, Gesundheit).",An unserer Schule sind Präventionsprogramme für Schülerinnen und Schüler etabliert.,set01,leh
-rpt_leh_p1,B324W264l,B32,"Ich bringe den Schülerinnen und Schülern bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können.","Bringe SuS bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können",set01,leh
+rpt_leh_p1,B324W264,B32,"Ich bringe den Schülerinnen und Schülern bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können.","Bringe SuS bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können",set01,leh
 gm_p4,B312a,B31,"An unserer Schule sind Präventionsprogramme für Schülerinnen und Schüler etabliert (z. B. bezüglich Gewalt, Sexualität, Drogen, Gesundheit).",An unserer Schule sind Präventionsprogramme für Schülerinnen und Schüler etabliert.,set01,leh
-rpt_leh_p1,B324W264l,W26,NA,"Bringe SuS bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können",set01,leh
+rpt_leh_p1,B324W264,W26,NA,"Bringe SuS bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können",set01,leh
 rpt_all_p2,A423W243s,W24,NA,Wir erstellen Medienprodukte.,set01,sus
 rpt_all_p2,B123l,B12,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,set01,leh
 rpt_leh_p2,B324W264l,B32,"Ich bringe den Schülerinnen und Schülern bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können.","Bringe SuS bei, die Glaubwürdigkeit ermittelter Informationen richtig einschätzen zu können",set01,leh
@@ -2887,9 +2887,9 @@ rpt_leh_gs_p2,B325W265l,B32,Ich thematisiere im Unterricht die Chancen und Risik
 ms_p2,A423W243s,A42,"Wir erstellen Medienprodukte (wie z. B. Texte, Videos, Präsentationen).",Wir erstellen Medienprodukte.,set01,sus
 gs_p1,B113,B11,"Schülerinnen und Schüler haben bei uns viele Möglichkeiten Verantwortung zu übernehmen (z. B. Mentoren, Projekte in Schülerverantwortung, Streitschlichter).",SuS haben bei uns viele Möglichkeiten Verantwortung zu übernehmen.,set01,leh
 rpt_leh_gs_p2,B325W265l,W26,NA,Thematisiere im Unterricht Chancen u. Risiken digitaler Medien für das Individuum und die Gesellschaft,set01,leh
-rpt_leh_p1,B325W265l,B32,Ich thematisiere im Unterricht die Chancen und Risiken digitaler Medien für das Individuum und die Gesellschaft.,Thematisiere im Unterricht Chancen u. Risiken digitaler Medien für das Individuum und die Gesellschaft,set01,leh
+rpt_leh_p1,B325W265,B32,Ich thematisiere im Unterricht die Chancen und Risiken digitaler Medien für das Individuum und die Gesellschaft.,Thematisiere im Unterricht Chancen u. Risiken digitaler Medien für das Individuum und die Gesellschaft,set01,leh
 gs_p1,B123,B12,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,An dieser Schule fühle ich mich jederzeit fair und gerecht behandelt.,set01,leh
-rpt_leh_p1,B325W265l,W26,NA,Thematisiere im Unterricht Chancen u. Risiken digitaler Medien für das Individuum und die Gesellschaft,set01,leh
+rpt_leh_p1,B325W265,W26,NA,Thematisiere im Unterricht Chancen u. Risiken digitaler Medien für das Individuum und die Gesellschaft,set01,leh
 gm_p1,B311,B31,An unserer Schule ist gesunde Ernährung ein wichtiges Thema.,An unserer Schule ist gesunde Ernährung ein wichtiges Thema.,set01,leh
 gm_p1,B312a,B31,"An unserer Schule sind Präventionsprogramme für Schülerinnen und Schüler etabliert (z. B. bezüglich Gewalt, Sexualität, Drogen, Gesundheit).",An unserer Schule sind Präventionsprogramme für Schülerinnen und Schüler etabliert.,set01,leh
 rpt_all_fz_p1,B311,B31,An unserer Schule ist gesunde Ernährung ein wichtiges Thema.,An unserer Schule ist gesunde Ernährung ein wichtiges Thema.,set01,leh
@@ -4528,8 +4528,8 @@ rpt_leh_gs_p1,D316W235l,D31,Ich nutze elektronische Kommunikationswege bzw. Plat
 rpt_leh_gs_p1,D316W235l,W23,NA,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
 rpt_leh_gs_p2,D316W235l,D31,Ich nutze elektronische Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
 rpt_leh_gs_p2,D316W235l,W23,NA,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
-rpt_leh_p1,D316W235l,D31,Ich nutze elektronische Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
-rpt_leh_p1,D316W235l,W23,NA,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
+rpt_leh_p1,D316W235,D31,Ich nutze elektronische Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
+rpt_leh_p1,D316W235,W23,NA,Ich nutze elektr. Kommunikationswege bzw. Plattformen zum Austausch mit den Eltern.,set01,leh
 gm_p2,A121,A12,"<span style=""font-size:28px;""><b><span style=""line-height:115%;""><span style=""font-family:Calibri, sans-serif;"">Wenn wir in der Klasse an Aufgaben arbeiten, dann machen alle gut mit.  </span></span></b></span>","GS_Wenn wir in der Klasse an Aufgaben arbeiten, dann machen alle gut mit.",set01,sus
 rpt_elt_p1,C111b,C11,"Wenn wir Anliegen oder Fragen haben, werden diese zuverlässig und zügig von der Schule beantwortet.","Wenn wir Anliegen oder Fragen haben, werden diese zuverlässig und zügig von der Schule beantwortet.",set01,elt
 gs_p2,D123W232a,D12,Ich entwickle zusammen mit Kolleginnen und Kollegen meiner Schule mediengestützte Unterrichtsstunden.,Entwickle zusammen mit Kolleg. meiner Schule mediengestützte Unterrichtsstunden,set01,leh
