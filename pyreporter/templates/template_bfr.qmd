@@ -37,6 +37,8 @@ def compute_height(n):
 ```
 
 
+![](graphic-title_bfr.png){width="90%"}
+
 
 ## Schule `{python} name`
 ## Schulnummer `{python} snr`

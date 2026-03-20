@@ -1,0 +1,64 @@
+---
+title: "Survey Report"
+format: pdf
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{python, echo = FALSE}
+#| tags: [parameters]
+
+snr="0001"
+name= "Bla"
+n= "10"
+d= "2"
+fb= "Schülerinnen und Schüler"
+meta= ["A11", "B21"]
+num_bars= [4, 3]
+header= ["Header 1", "Header 2"]
+```
+
+```{python}
+standard_height = 4
+def compute_height(n):
+    if n is None:
+        n = 3
+    if n == 3:
+        h = standard_height - 1
+    elif n == 2:
+        h = standard_height - 2
+    elif n == 1:
+        h = standard_height - 3
+    else:
+        h = standard_height
+    return max(h, 3)
+```
+
+
+![](graphic-title_bfr.png){width="90%"}
+
+
+## Schule `{python} name`
+## Schulnummer `{python} snr`
+## Report: `{python} fb`
+## Gültige Beobachtungen: `{python} n`
+
+
+\newpage
+
+
+```{python, results='asis'}
+
+from IPython.display import Markdown, display
+from pathlib import Path
+
+
+
+# Loop through plots
+for plot_name, bars, head in zip(meta, num_bars, header):
+    fig_height = compute_height(bars)
+    display(Markdown(f"## {head}"))
+    display(Markdown(f"![](plots/{plot_name}_plot.pdf){{height={fig_height}in}}"))
+```

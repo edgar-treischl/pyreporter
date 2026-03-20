@@ -102,8 +102,8 @@ def main():
         header_report=header_report
     )
 
-    tmpdir = get_directory(snr = snr, syear = syear)
-    clean_files(where = tmpdir)
+    #tmpdir = get_directory(snr = snr, syear = syear)
+    #clean_files(where = tmpdir)
 
 
 if __name__ == "__main__":

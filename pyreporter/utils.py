@@ -578,10 +578,16 @@ def create_directories(snr, audience, ubb, syear):
         tmp_dir / "header_eva_las.png"
     )
 
-    shutil.copy(
-        templates_dir / "template.qmd",
-        tmp_dir / "template.qmd"
-    )
+    if ubb:
+        shutil.copy(
+            templates_dir / "template_ubb.qmd",
+            tmp_dir / "template.qmd"
+        )
+    else:
+        shutil.copy(
+            templates_dir / "template_bfr.qmd",
+            tmp_dir / "template.qmd"
+        )
 
     return tmp_dir
 
