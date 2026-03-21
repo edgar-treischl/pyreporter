@@ -3,78 +3,50 @@
 ## Commands
 
 ```bash
-# Run main pipeline
+# Install dependencies
+poetry install
+
+# Run the full pipeline directly
 poetry run python -m pyreporter.run
 
-# Run tests / scripts
-poetry run python -m pyreporter.test        # meta data smoke test
-poetry run python -m pyreporter.test.test   # inspect meta_sets
-poetry run python -m pyreporter.test.test_plot  # visual plot test (renders a window)
-poetry run python -m pyreporter.test.limer_test # live LimeSurvey API test (requires .env)
+# Run the full pipeline with repository defaults/overrides
+make run SNR=0001 STYPE=gy AUDIENCE=sus UBB=False GANZTAG=False HAS_N=sus,leh YEAR=2025
+
+# Clean generated output
+make clean
+
+# Focused script-style checks (there is no pytest suite in this repo)
+poetry run python -m pyreporter.test.test        # print meta_sets from MetaRepository
+poetry run python -m pyreporter.test.test2       # exercise get_metadata() template selection
+poetry run python -m pyreporter.test.test_render # render a PDF from existing local assets
+poetry run python -m pyreporter.test.test_plot   # open a plotnine window for manual inspection
+poetry run python -m pyreporter.test.limer_test  # live LimeSurvey API check; requires .env
 ```
 
-## Architecture
+`poetry run python -m pyreporter.test` is stale and does not work because `pyreporter.test` has no `__main__`; use one of the explicit modules above instead.
 
-pyreporter is a **school evaluation report pipeline** that:
-1. Fetches survey responses from a **LimeSurvey** instance via JSON-RPC API (`limer.py`)
-2. Selects the correct report template using **CSV-based metadata** (`MetaRepository`, `pyreporter/data/`)
-3. Processes raw response data into aggregated plot data (`utils.py`)
-4. Renders **plotnine** (ggplot2-style) charts as PDFs (`plot.py`)
-5. Assembles a final PDF report by rendering a **Quarto `.qmd` template** (`render_pdf.py`)
+## High-Level Architecture
 
-### Module responsibilities
+`pyreporter` is a survey-report pipeline for school evaluations. The end-to-end flow crosses several modules:
 
-| Module | Role |
-|---|---|
-| `limer.py` | LimeSurvey API: session management, survey listing, response export |
-| `meta_repository.py` | Loads and validates all CSV metadata into a single `MetaRepository` object |
-| `utils.py` | Data processing: `get_metadata`, `get_data`, `get_plotdata`, `get_sname`, `get_directory`, `match_meta_reports` |
-| `plot.py` | Chart creation (`create_ggplot`) and export (`export_plot`) |
-| `render_pdf.py` | Quarto subprocess invocation to render `.qmd` → PDF |
+1. `pyreporter.run` reads environment-driven inputs, loads metadata, and orchestrates the entire report generation.
+2. `pyreporter.limer` talks to LimeSurvey over JSON-RPC, discovers the relevant surveys for a school, and exports raw responses.
+3. `pyreporter.utils.get_data()` converts each exported survey from wide CSV into a normalized long-format DataFrame with `sid`, `surveyls_title`, `id`, `vars`, and `vals`.
+4. `pyreporter.utils.get_metadata()` and `get_plotdata()` resolve the report template and join survey responses with CSV metadata from `pyreporter/data/`.
+5. `pyreporter.plot` turns the prepared plot data into plotnine charts and writes PDFs under `res/{snr}_{syear}/plots/`.
+6. `pyreporter.utils.create_directories()` prepares `res/{snr}_{syear}/` by copying the correct `.qmd` template and image assets from `pyreporter/templates/`.
+7. `pyreporter.render_pdf` writes `params.yml` and runs `quarto render template.qmd --to pdf --execute-params params.yml` to assemble the final report PDF.
 
-### Metadata CSVs (`pyreporter/data/`)
-
-All domain configuration lives in CSVs, never hardcoded:
-- `meta_templates.csv` — maps `(stype, type, ubb, ganztag)` to a `report_tmpl` name
-- `meta_reports.csv` — maps report templates to plot names and survey variable codes
-- `meta_sets.csv` — Likert scale label sets (codes, labels, colors, sort order)
-- `meta_headers.csv` — header/section metadata per plot
-- `meta_snames.csv` — school number (`SNR`) → school name mapping
-
-### Output structure
-
-```
-pyreporter/res/{snr}_{year}/
-    plots/          ← PDF charts, one per plot name (e.g. A12_plot.pdf)
-    template.qmd    ← Quarto template (copied/placed manually)
-    {snr}_results_{audience}.pdf  ← final rendered report
-```
+The metadata layer is central to the design. `MetaRepository` loads `meta_templates.csv`, `meta_reports.csv`, `meta_sets.csv`, `meta_headers.csv`, `meta_mastertotemplate.csv`, and `meta_snames.csv` from package resources, and the pipeline uses those CSVs to choose report templates, plot membership, label sets, header text, and school names. When behavior changes, the right fix is often in the CSV metadata rather than Python code.
 
 ## Key Conventions
 
-**LimeSurvey session lifecycle** — always acquire and release explicitly:
-```python
-limer_connect()
-# ... limer_call / limer_responses / limer_n / limer_SIDs ...
-limer_release()
-```
-`limer_connect()` populates a module-level `session_cache`; `limer_call()` reads from it.
-
-**School number (`snr`)** is always a 4-digit zero-padded string (e.g. `"0001"`). `meta_snames.csv` is loaded with `dtype={"SNR": str}` to preserve leading zeros.
-
-**Boolean columns in CSVs** are stored as `0`/`1` or `"true"`/`"false"` strings. Use `_as_bool()` from `utils.py` to normalize before filtering.
-
-**Audience codes**: `"sus"` (students), `"elt"` (parents), `"leh"` (teachers), `"ubb"` (classroom observations), `"aus"` (trainers), `"all"` (combined).
-
-**`ubb` flag** distinguishes classroom observation surveys — LimeSurvey survey titles containing the string `"ubb"` are treated as observation surveys; all others are standard surveys.
-
-**Response data → long format**: `get_data()` pivots wide LimeSurvey CSVs (semicolon-delimited, base64-encoded) into a long DataFrame with columns `sid`, `surveyls_title`, `id`, `vars`, `vals`.
-
-**Plot branching**: `create_ggplot(data, ubb, labels)` has two distinct code paths — `ubb=True` uses raw counts (`anz`); `ubb=False` uses percentages (`p`).
-
-**Environment** — credentials are loaded from `.env` via `python-dotenv`. Required variables:
-```
-LIME_API_URL=
-LIME_USERNAME=
-LIME_PASSWORD=
-```
+- Treat school numbers as zero-padded strings. `meta_snames.csv` is loaded with `dtype={"SNR": str}` so leading zeros survive joins and lookups.
+- Normalize metadata booleans with `_as_bool()` before filtering. `meta_templates["ubb"]` and `meta_templates["ganztag"]` are stored as string-like values in CSVs.
+- Audience codes are domain-specific: `sus`, `elt`, `leh`, `ubb`, `aus`, and `all`. The `all` audience is special: `get_metadata()` needs `data_avail`, and `get_plotdata()` appends the audience `type` to `vars`.
+- `ubb` changes behavior across the pipeline. Survey discovery checks whether `surveyls_title` contains `"ubb"`, and plotting switches from percentage-based bars (`p`) to raw-count bars (`anz`) when `ubb=True`.
+- `get_data()` reshapes LimeSurvey exports into the long format expected everywhere else. It strips dots from variable names, splits at the first `X`, removes the first three characters, trims values, and drops blank answers before downstream joins.
+- `run.py` derives the report year from the LimeSurvey survey title, not from the `YEAR` environment variable, before creating `res/{snr}_{syear}/`.
+- Use `create_directories()` and `get_directory()` as the source of truth for output layout. `render_pdf()` expects `template.qmd`, header graphics, and `plots/` to already exist in that directory.
+- LimeSurvey access depends on a module-level session cache in `limer.py`. Preserve the existing connect/call/release flow when changing API code, and keep `.env` variables `LIME_API_URL`, `LIME_USERNAME`, and `LIME_PASSWORD` in sync.
+- `match_meta_reports()` joins `meta_reports` with `meta_headers` to build the `header_report` DataFrame required by `render_pdf()`. If a plot exists in a report but not in `meta_headers`, rendering will fail before Quarto runs.
