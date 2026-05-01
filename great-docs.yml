@@ -46,9 +46,9 @@ authors:
     role: Author
     # affiliation: 
     email: edgar.treischl@isb.bayern.de
-    # github: 
+    github: edgar-treischl
     # orcid: 
-    # homepage: 
+    homepage: https://edgar-treischl.de
 
 # Funding / Copyright Holder
 # --------------------------
@@ -152,3 +152,5 @@ jupyter: python3
 #   enabled: true              # Enable CLI documentation
 #   module: my_package.cli     # Module containing Click commands
 #   name: cli                  # Name of the Click command object
+
+repo: https://github.com/edgar-treischl/pyreporter
