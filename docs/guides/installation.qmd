@@ -1,0 +1,110 @@
+# Installation
+
+This guide will help you install PyReporter and set up your development environment.
+
+## Requirements
+
+PyReporter requires:
+
+- Python 3.14 or later
+- Poetry (for dependency management)
+- Quarto (for PDF generation)
+
+## Install Poetry
+
+If you don't have Poetry installed, follow the [official Poetry installation guide](https://python-poetry.org/docs/#installation):
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+## Install Quarto
+
+PyReporter uses Quarto to render PDF reports. Download and install Quarto from:
+
+<https://quarto.org/docs/get-started/>
+
+Or use a package manager:
+
+::: {.panel-tabset}
+
+## macOS
+
+```bash
+brew install quarto
+```
+
+## Linux
+
+```bash
+# Ubuntu/Debian
+sudo apt-get install quarto
+
+# Or download from https://quarto.org/docs/download/
+```
+
+## Windows
+
+Download the installer from <https://quarto.org/docs/download/>
+
+:::
+
+## Install PyReporter
+
+### From Source
+
+Clone the repository and install dependencies:
+
+```bash
+git clone <repository-url>
+cd pyreporter
+poetry install
+```
+
+This will install all required dependencies including pandas, plotnine, and quarto integration.
+
+### Development Dependencies
+
+To install development dependencies (including documentation tools):
+
+```bash
+poetry install --with dev,docs
+```
+
+## Configure LimeSurvey Credentials
+
+PyReporter connects to LimeSurvey via its JSON-RPC API. You need to configure your credentials:
+
+1. Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+2. Edit `.env` with your LimeSurvey credentials:
+
+```bash
+LIME_API_URL=https://your-limesurvey-instance.com/admin/remotecontrol
+LIME_USERNAME=your_username
+LIME_PASSWORD=your_password
+```
+
+:::{.callout-warning}
+Never commit your `.env` file to version control. It contains sensitive credentials.
+:::
+
+## Verify Installation
+
+Test that everything is installed correctly:
+
+```bash
+# Test the package imports
+poetry run python -c "from pyreporter import MetaRepository; print('✓ Import successful')"
+
+# Test Quarto is available
+quarto --version
+```
+
+## Next Steps
+
+Now that PyReporter is installed, continue to [Getting Started](getting-started.qmd) to learn how to generate your first report.

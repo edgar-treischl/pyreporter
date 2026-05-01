@@ -16,7 +16,7 @@ parser: numpy
 # ---------------------
 # Use runtime introspection for more accurate documentation (default: true)
 # Set to false if your package has cyclic alias issues (e.g., PyO3/Rust bindings)
-dynamic: true
+dynamic: false
 
 # API Discovery Settings
 # ----------------------

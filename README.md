@@ -1,13 +1,35 @@
-poetry run python -m pyreporter.test
-poetry run python -m pyreporter.test.test
+# PyReporter
 
+A survey-report pipeline for automated school evaluation reports. PyReporter connects to LimeSurvey, processes survey responses, generates visualizations, and produces comprehensive PDF reports using Quarto.
 
-poetry run python -m pyreporter.run
+## Features
 
-poetry run python -m pyreporter.test.test_plot
+- 🔗 **LimeSurvey Integration**: Automatic survey discovery and data export via JSON-RPC API
+- 📊 **Data Processing**: Transforms survey responses into normalized long-format DataFrames
+- 📈 **Visualization**: Creates publication-ready plots using plotnine
+- 📄 **PDF Generation**: Assembles reports with Quarto using customizable templates
+- 🎯 **Metadata-Driven**: CSV-based configuration for templates, labels, and report structure
 
-poetry run python -m pyreporter.test.test_render
+## Quick Start
 
+```bash
+# Install dependencies
+poetry install
+
+# Configure LimeSurvey credentials
+cp .env.example .env
+# Edit .env with your credentials
+
+# Run the full pipeline
+make run SNR=0001 STYPE=gy AUDIENCE=sus YEAR=2025
 ```
-copilot --resume=ea962ad6-30cd-4d28-8822-2c07bc9be2ca
-```
+
+## Documentation
+
+Visit the [full documentation](https://your-docs-url.here) for:
+- Installation guide
+- Getting started tutorial
+- API reference
+- Configuration options
+
+

@@ -1,0 +1,166 @@
+# Getting Started
+
+This guide walks you through generating your first school evaluation report with PyReporter.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+1. [Installed PyReporter and its dependencies](installation.qmd)
+2. Configured your LimeSurvey credentials in `.env`
+3. Access to a LimeSurvey instance with survey data
+
+## Understanding the Pipeline
+
+PyReporter follows a multi-stage pipeline:
+
+1. **Survey Discovery**: Connects to LimeSurvey and finds relevant surveys
+2. **Data Export**: Downloads survey responses in CSV format
+3. **Data Processing**: Transforms responses into normalized long-format data
+4. **Metadata Joining**: Enriches data with labels and configuration from CSV metadata
+5. **Visualization**: Generates plotnine charts as PDFs
+6. **Report Assembly**: Renders final PDF using Quarto templates
+
+## Running Your First Report
+
+### Basic Usage
+
+The simplest way to run the pipeline is with the default configuration:
+
+```bash
+poetry run python -m pyreporter.run
+```
+
+This will use environment variables to configure the report generation.
+
+### Using the Makefile
+
+For more convenient usage, PyReporter includes a Makefile with default values:
+
+```bash
+make run
+```
+
+This uses the following defaults:
+- `SNR=0001` - School number
+- `STYPE=gy` - School type (Gymnasium)
+- `AUDIENCE=leh` - Target audience (teachers)
+- `UBB=False` - UBB mode disabled
+- `GANZTAG=False` - Full-day school mode disabled
+- `HAS_N=sus,leh` - Available audience types
+- `YEAR=2025` - Report year
+
+### Customizing Parameters
+
+Override any parameter when running the pipeline:
+
+```bash
+# Generate report for a different school
+make run SNR=0042 STYPE=rs AUDIENCE=sus
+
+# Generate UBB report with multiple audiences
+make run SNR=0001 UBB=True HAS_N=sus,leh,elt AUDIENCE=all
+
+# Generate full-day school report
+make run SNR=0123 GANZTAG=True AUDIENCE=elt YEAR=2026
+```
+
+## Configuration Parameters
+
+| Parameter | Description | Example Values |
+|-----------|-------------|----------------|
+| `SNR` | School number (zero-padded string) | `0001`, `0042`, `0123` |
+| `STYPE` | School type | `gy` (Gymnasium), `rs` (Realschule) |
+| `AUDIENCE` | Target audience | `sus` (students), `leh` (teachers), `elt` (parents), `ubb` (supervision), `all` |
+| `UBB` | UBB supervision mode | `True`, `False` |
+| `GANZTAG` | Full-day school mode | `True`, `False` |
+| `HAS_N` | Available audience types (comma-separated) | `sus,leh`, `sus,leh,elt` |
+| `YEAR` | Report year | `2024`, `2025`, `2026` |
+
+## Output Structure
+
+Reports are generated in the `res/` directory:
+
+```
+res/
+└── 0001_2025/           # {SNR}_{YEAR}
+    ├── template.qmd     # Quarto template (copied from templates/)
+    ├── params.yml       # Report parameters
+    ├── header_*.pdf     # Header graphics
+    ├── plots/           # Generated visualizations
+    │   ├── plot_*.pdf
+    │   └── ...
+    └── report.pdf       # Final rendered report
+```
+
+## Exploring Test Scripts
+
+PyReporter includes several test scripts for development and debugging:
+
+```bash
+# Print metadata sets from MetaRepository
+poetry run python -m pyreporter.test.test
+
+# Test metadata template selection
+poetry run python -m pyreporter.test.test2
+
+# Test PDF rendering from existing assets
+poetry run python -m pyreporter.test.test_render
+
+# Test plotnine visualization (opens a window)
+poetry run python -m pyreporter.test.test_plot
+
+# Test LimeSurvey API connection (requires .env)
+poetry run python -m pyreporter.test.limer_test
+```
+
+:::{.callout-note}
+The `test` module is for development checks, not pytest tests. These scripts help verify components work correctly.
+:::
+
+## Cleaning Generated Files
+
+Remove all generated reports:
+
+```bash
+make clean
+```
+
+This deletes everything under `res/` while preserving the directory structure.
+
+## Next Steps
+
+- Explore the [API Reference](../../reference/index.qmd) to understand the core classes and functions
+- Review the metadata CSV files in `pyreporter/data/` to customize report behavior
+- Examine the Quarto templates in `pyreporter/templates/` to modify report layout
+- Learn about the [MetaRepository](../../reference/MetaRepository.qmd) for managing metadata
+
+## Common Issues
+
+### LimeSurvey Connection Fails
+
+Check your `.env` file has the correct credentials and API URL:
+
+```bash
+LIME_API_URL=https://your-instance.com/admin/remotecontrol
+```
+
+### Missing Metadata
+
+Ensure all required CSV files exist in `pyreporter/data/`:
+- `meta_templates.csv`
+- `meta_reports.csv`
+- `meta_sets.csv`
+- `meta_headers.csv`
+- `meta_mastertotemplate.csv`
+- `meta_snames.csv`
+
+### Quarto Rendering Errors
+
+Verify Quarto is installed and accessible:
+
+```bash
+quarto --version
+```
+
+Check that `plots/` directory exists and contains the expected PDF files before rendering
