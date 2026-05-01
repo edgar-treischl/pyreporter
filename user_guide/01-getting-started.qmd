@@ -1,4 +1,10 @@
-# Getting Started
+---
+title: "Getting Started"
+guide-section: "Getting Started"
+---
+
+
+
 
 This guide walks you through generating your first school evaluation report with PyReporter.
 
