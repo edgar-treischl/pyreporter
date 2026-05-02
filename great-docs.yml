@@ -154,3 +154,4 @@ jupyter: python3
 #   name: cli                  # Name of the Click command object
 
 repo: https://github.com/edgar-treischl/pyreporter
+github_style: icon

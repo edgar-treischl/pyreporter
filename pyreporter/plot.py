@@ -305,3 +305,88 @@ def create_plotlist(meta_list, snr, year, audience, report, data, ubb=False, exp
         ),
         meta_list
     ))
+
+
+def main():
+    """CLI entry point for plot command."""
+    import os
+    import sys
+    from pyreporter.prepare import prepare_data
+    from pyreporter.utils import create_directories
+    
+    # Read from environment
+    snr = os.getenv("SNR", "0001")
+    stype = os.getenv("STYPE", "gy")
+    audience = os.getenv("AUDIENCE", "sus")
+    ubb = os.getenv("UBB", "False").lower() == "true"
+    ganztag = os.getenv("GANZTAG", "False").lower() == "true"
+    has_N = os.getenv("HAS_N", "sus,leh").split(",")
+    plot_name = os.getenv("PLOT", "")  # Specific plot to generate
+    
+    # Force no cache if NO_CACHE is set
+    use_cache = os.getenv("NO_CACHE", "").lower() != "true"
+    
+    # Get or load prepared data
+    prepared = prepare_data(
+        snr=snr,
+        stype=stype,
+        audience=audience,
+        ubb=ubb,
+        ganztag=ganztag,
+        has_N=has_N,
+        use_cache=use_cache
+    )
+    
+    # Create output directory structure
+    create_directories(snr=snr, audience=audience, ubb=ubb, syear=prepared['syear'])
+    
+    # Determine which plots to generate
+    if plot_name:
+        # Single plot specified
+        if plot_name not in prepared['plot_data']:
+            print(f"❌ Error: Plot '{plot_name}' not found in report")
+            print(f"   Available plots: {', '.join(prepared['report_meta']['meta'])}")
+            sys.exit(1)
+        plots_to_generate = [plot_name]
+        print(f"\n📊 Generating single plot: {plot_name}")
+    else:
+        # All plots
+        plots_to_generate = prepared['report_meta']['meta']
+        print(f"\n📊 Generating {len(plots_to_generate)} plots")
+    
+    # Fetch raw data for plotting (needed by export_plot)
+    from pyreporter.fetch import fetch_raw_data
+    fetch_result = fetch_raw_data(
+        snr=snr,
+        stype=stype,
+        audience=audience,
+        ubb=ubb,
+        ganztag=ganztag,
+        has_N=has_N,
+        use_cache=use_cache
+    )
+    
+    # Generate plots
+    for plot in plots_to_generate:
+        try:
+            export_plot(
+                meta=plot,
+                snr=snr,
+                year=prepared['syear'],
+                audience=audience,
+                report=prepared['report_meta']['report'],
+                data=fetch_result['raw_data'],
+                ubb=ubb,
+                export=True
+            )
+            print(f"   ✓ {plot}")
+        except Exception as e:
+            print(f"   ✗ {plot}: {e}")
+            raise
+    
+    print(f"\n✅ Plot generation complete")
+    return prepared
+
+
+if __name__ == "__main__":
+    main()

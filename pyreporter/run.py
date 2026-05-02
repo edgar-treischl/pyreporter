@@ -3,12 +3,9 @@ import json
 import os
 import pandas as pd
 
-from pyreporter.utils import (
-    get_metadata, get_sname, get_data, match_meta_reports, get_n,
-    create_directories, get_directory, clean_files
-)
-from pyreporter.meta_repository import MetaRepository
-from pyreporter.limer import limer_connect, limer_SIDs
+from pyreporter.fetch import fetch_raw_data
+from pyreporter.prepare import prepare_data
+from pyreporter.utils import create_directories, get_directory, clean_files
 from pyreporter.plot import create_plotlist
 from pyreporter.render_pdf import render_pdf
 
@@ -54,7 +51,8 @@ def main(
     ubb: bool = DEFAULTS["ubb"],
     ganztag: bool = DEFAULTS["ganztag"],
     has_N: Optional[List[str]] = None,
-    year: str = DEFAULTS["year"]
+    year: str = DEFAULTS["year"],
+    use_cache: bool = True
 ) -> None:
     if has_N is None:
         has_N = DEFAULTS["has_N"]
@@ -62,93 +60,110 @@ def main(
     # --- Print current effective configuration ---
     print_config(snr, stype, audience, ubb, ganztag, has_N, year)
 
-    # --- Meta repository ---
-    meta_repo = MetaRepository()
-    meta_templates = meta_repo.meta_templates
-    meta_reports = meta_repo.meta_reports
-    meta_snames = meta_repo.meta_snames
-
-    sname_meta = get_sname(meta_snames=meta_snames, snr=snr)
-    print("\nReport for:", sname_meta)
-
-    # --- Limer connection ---
-    limer_connect()
-    sids_df = limer_SIDs(snr=snr, ubb=ubb)
-    sid = sids_df["sid"]
-    print("\nSurvey ID:", sid)
-
-    # --- N results ---
-    n_result = get_n(audience=audience, data=sids_df)
-    result_n = n_result["tmp.n"]
-
-    surveyls_title = sids_df["surveyls_title"]
-    second_set_of_digits = surveyls_title.str.extract(r'^[^_]+_([^_]+)')[0]
-    years = second_set_of_digits.str[:4].unique()
-    syear = str(years[0])
-
-    create_directories(snr=snr, audience=audience, ubb=ubb, syear=syear)
-
-    # --- Response data ---
-    #realdf = get_data(id="251539", surveyls_title="Bla", ubb=False)
+    # --- Step 1: Fetch raw data ---
+    print("\n" + "="*60)
+    print("STEP 1: FETCH RAW DATA")
+    print("="*60)
     
-    dataframes = [
-    get_data(id=sid, surveyls_title=surveyls_title, ubb=ubb)
-    for sid, title in zip(sids_df["sid"], sids_df["surveyls_title"])
-    ]
-
-    # Combine all into one dataframe
-
-    realdf = pd.concat(dataframes, ignore_index=True)
-    print("\nData downloaded:", realdf.head())
-
-    # --- Report metadata ---
-    report_meta = get_metadata(
-        meta_templates=meta_templates,
-        meta_reports=meta_reports,
-        school=stype,
+    fetch_result = fetch_raw_data(
+        snr=snr,
+        stype=stype,
         audience=audience,
-        ub=ubb,
-        gt=ganztag,
-        data_avail=has_N
+        ubb=ubb,
+        ganztag=ganztag,
+        has_N=has_N,
+        use_cache=use_cache
     )
-    print("\nReport meta:", report_meta)
+    
+    raw_data = fetch_result['raw_data']
+    syear = fetch_result['syear']
+    result_n = fetch_result['result_n']
+    
+    print(f"✓ Fetched {len(raw_data)} response rows")
 
-    # --- Export plots ---
+    # --- Step 2: Prepare data ---
+    print("\n" + "="*60)
+    print("STEP 2: PREPARE DATA")
+    print("="*60)
+    
+    prepared = prepare_data(
+        snr=snr,
+        stype=stype,
+        audience=audience,
+        ubb=ubb,
+        ganztag=ganztag,
+        has_N=has_N,
+        raw_data=raw_data,
+        use_cache=use_cache
+    )
+    
+    report_meta = prepared['report_meta']
+    header_report = prepared['header_report']
+    sname = prepared['sname']
+    
+    print(f"✓ Prepared {len(prepared['plot_data'])} plots")
+
+    # --- Step 3: Create directories ---
+    print("\n" + "="*60)
+    print("STEP 3: SETUP OUTPUT DIRECTORY")
+    print("="*60)
+    
+    create_directories(snr=snr, audience=audience, ubb=ubb, syear=syear)
+    print(f"✓ Created directory structure in res/{snr}_{syear}/")
+
+    # --- Step 4: Generate plots ---
+    print("\n" + "="*60)
+    print("STEP 4: GENERATE PLOTS")
+    print("="*60)
+    
     create_plotlist(
         meta_list=report_meta['meta'],
         snr=snr,
         year=syear,
         audience=audience,
         report=report_meta['report'],
-        data=realdf,
+        data=raw_data,
         ubb=ubb,
         export=True
     )
+    
+    print(f"✓ Generated {len(report_meta['meta'])} plots")
 
-    # --- Build header report ---
-    header_report = match_meta_reports(
-        survey_report=report_meta['report'],
-        survey_plots=report_meta['meta']
-    )
-
-    # --- Render final PDF ---
+    # --- Step 5: Render PDF ---
+    print("\n" + "="*60)
+    print("STEP 5: RENDER PDF")
+    print("="*60)
+    
     render_pdf(
         audience=audience,
         snr=snr,
         year=syear,
-        sname=sname_meta,
+        sname=sname,
         survey_n=result_n,
         duration="2",
         header_report=header_report
     )
+    
+    print(f"✓ Rendered PDF report")
 
-    # --- Clean temporary files ---
+    # --- Step 6: Clean temporary files ---
+    print("\n" + "="*60)
+    print("STEP 6: CLEANUP")
+    print("="*60)
+    
     tmpdir = get_directory(snr=snr, syear=syear)
     clean_files(where=tmpdir)
+    
+    print("\n" + "="*60)
+    print("✅ PIPELINE COMPLETE!")
+    print("="*60)
+    print(f"\nReport saved to: {tmpdir}/{snr}_results_{audience}.pdf")
 
 
 if __name__ == "__main__":
     # Read environment variables for automation
+    use_cache = os.getenv("NO_CACHE", "").lower() != "true"
+    
     main(
         snr=os.getenv("SNR", DEFAULTS["snr"]),
         stype=os.getenv("STYPE", DEFAULTS["stype"]),
@@ -156,5 +171,6 @@ if __name__ == "__main__":
         ubb=os.getenv("UBB", str(DEFAULTS["ubb"])).lower() == "true",
         ganztag=os.getenv("GANZTAG", str(DEFAULTS["ganztag"])).lower() == "true",
         has_N=os.getenv("HAS_N", ",".join(DEFAULTS["has_N"])).split(","),
-        year=os.getenv("YEAR", DEFAULTS["year"])
+        year=os.getenv("YEAR", DEFAULTS["year"]),
+        use_cache=use_cache
     )
