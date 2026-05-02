@@ -109,14 +109,9 @@ reference:
       - plot.get_plotdata
       - render_pdf.get_directory
       - run.clean_files
-      - run.create_directories
-      - run.get_data
-      - run.get_directory
-      - run.get_n
-      - run.get_sname
       - run.main
-      - run.match_meta_reports
       - run.print_config
+      - utils.get_data
 
   - title: Constants
     desc: Module-level constants and data
