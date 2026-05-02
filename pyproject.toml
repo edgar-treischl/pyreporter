@@ -19,7 +19,10 @@ dependencies = [
     "nbformat (>=5.10.4,<6.0.0)",
     "nbclient (>=0.10.4,<0.11.0)",
     "quarto (>=0.1.0,<0.2.0)",
-    "papermill (>=2.6.0,<3.0.0)"
+    "papermill (>=2.6.0,<3.0.0)",
+    "fastapi (>=0.115.0,<0.116.0)",
+    "uvicorn[standard] (>=0.32.0,<0.33.0)",
+    "pydantic (>=2.10.0,<3.0.0)"
 ]
 
 

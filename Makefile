@@ -1,4 +1,4 @@
-.PHONY: run fetch prepare plot clean clean-cache help
+.PHONY: run fetch prepare plot clean clean-cache api api-dev help
 
 # --- Default values (can be overridden) ---
 SNR ?= 0001
@@ -38,6 +38,16 @@ run:
 	@echo "🚀 Running full pipeline..."
 	poetry run python -m pyreporter.run
 
+# --- API targets ---
+
+api:
+	@echo "🌐 Starting API server..."
+	poetry run uvicorn pyreporter.api:app --host 0.0.0.0 --port 8000
+
+api-dev:
+	@echo "🌐 Starting API server (development mode with auto-reload)..."
+	poetry run uvicorn pyreporter.api:app --reload --host 0.0.0.0 --port 8000
+
 # --- Cleaning targets ---
 
 clean:
@@ -69,6 +79,11 @@ help:
 	@echo "  make prepare      Prepare plot-ready data (cached)"
 	@echo "  make plot         Generate all plots (or specify PLOT=name)"
 	@echo "  make run          Run full pipeline (fetch + prepare + plots + PDF)"
+	@echo ""
+	@echo "API Server:"
+	@echo "  make api          Start FastAPI server (production mode)"
+	@echo "  make api-dev      Start FastAPI server (dev mode with auto-reload)"
+	@echo "                    API docs at: http://localhost:8000/docs"
 	@echo ""
 	@echo "Examples:"
 	@echo "  make fetch SNR=0001 UBB=True"

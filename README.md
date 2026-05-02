@@ -10,8 +10,11 @@ A survey-report pipeline for automated school evaluation reports. PyReporter con
 - 📄 **PDF Generation**: Assembles reports with Quarto using customizable templates
 - 🎯 **Metadata-Driven**: CSV-based configuration for templates, labels, and report structure
 - ⚡ **Modular & Cacheable**: Split pipeline into independent stages with intelligent caching
+- 🌐 **REST API**: FastAPI service layer for programmatic access
 
 ## Quick Start
+
+### CLI Usage
 
 ```bash
 # Install dependencies
@@ -24,6 +27,18 @@ cp .env.example .env
 # Run the full pipeline
 make run SNR=0001 STYPE=gy AUDIENCE=sus YEAR=2025
 ```
+
+### API Usage
+
+```bash
+# Start the API server
+make api-dev
+
+# Visit the interactive docs
+open http://localhost:8000/docs
+```
+
+See [API_README.md](API_README.md) for complete API documentation.
 
 ## Modular Pipeline Architecture
 
@@ -48,12 +63,33 @@ make plot PLOT=A12
 make run SNR=0001 STYPE=gy AUDIENCE=sus
 ```
 
+### API Endpoints
+
+```bash
+# Start the API server (development mode with auto-reload)
+make api-dev
+
+# Or production mode
+make api
+```
+
+The API provides RESTful endpoints for all pipeline stages:
+
+1. **POST** `/api/v1/raw-data` - Fetch raw survey data
+2. **POST** `/api/v1/prepared-data` - Prepare plot-ready data
+3. **POST** `/api/v1/plot` - Generate a single plot
+4. **POST** `/api/v1/report` - Create complete PDF report
+5. **GET** `/api/v1/plots/list` - List available plots
+
+See [API_README.md](API_README.md) for detailed endpoint documentation, request/response examples, and usage instructions.
+
 ### Benefits
 
 - **⚡ Faster Iteration**: Skip expensive API calls with intelligent caching
 - **🎯 Selective Execution**: Generate only the plots you need during development
 - **🔍 Better Debugging**: Test each stage independently
 - **🔄 Composability**: Mix cached and fresh data as needed
+- **🌐 Programmatic Access**: Use the REST API from any language or platform
 
 ### Caching Behavior
 
@@ -96,12 +132,66 @@ make plot AUDIENCE=leh
 make plot AUDIENCE=elt
 ```
 
+### Use the API Programmatically
+
+```python
+import requests
+
+# Generate a report via API
+response = requests.post(
+    "http://localhost:8000/api/v1/report",
+    json={
+        "snr": "0001",
+        "stype": "gy",
+        "audience": "sus",
+        "year": "2025"
+    }
+)
+
+# Save the PDF
+with open("report.pdf", "wb") as f:
+    f.write(response.content)
+```
+
+See [example_api_client.py](example_api_client.py) for more examples.
+
 ### Clean Generated Files
 
 ```bash
 make clean         # Delete generated reports (res/)
 make clean-cache   # Delete cached data (.cache/)
 make clean-all     # Delete everything
+```
+
+## Available Commands
+
+```bash
+make help          # Show all available commands
+
+# Pipeline commands
+make fetch         # Download raw data from LimeSurvey
+make prepare       # Prepare plot-ready data
+make plot          # Generate plots
+make run           # Run full pipeline
+
+# API commands
+make api           # Start API server (production)
+make api-dev       # Start API server (development)
+
+# Cleaning
+make clean         # Clean output files
+make clean-cache   # Clean cache
+make clean-all     # Clean everything
+```
+
+## Testing
+
+```bash
+# Test API setup
+poetry run python test_api_setup.py
+
+# Test API client examples
+poetry run python example_api_client.py
 ```
 
 ## Documentation
