@@ -2,14 +2,6 @@
 
 FastAPI service layer for the pyreporter survey report generation pipeline.
 
-## Quick Start
-
-### Installation
-
-```bash
-# Install dependencies including FastAPI
-poetry install
-```
 
 ### Starting the API Server
 

@@ -92,9 +92,7 @@ LIME_USERNAME=your_username
 LIME_PASSWORD=your_password
 ```
 
-:::{.callout-warning}
-Never commit your `.env` file to version control. It contains sensitive credentials.
-:::
+
 
 ## Verify Installation
 

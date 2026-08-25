@@ -141,4 +141,3 @@ poetry run python example_api_client.py
 
 - **Full API Docs**: [API_README.md](API_README.md)
 - **Implementation**: [FASTAPI_SUMMARY.md](FASTAPI_SUMMARY.md)
-- **Main README**: [README.md](README.md)

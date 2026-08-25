@@ -4,9 +4,7 @@ guide-section: "Getting Started"
 ---
 
 
-
-
-This guide walks you through generating your first school evaluation report with PyReporter.
+This guide walks you through your first report with PyReporter.
 
 ## Prerequisites
 
@@ -14,7 +12,7 @@ Before you begin, make sure you have:
 
 1. [Installed PyReporter and its dependencies](installation.qmd)
 2. Configured your LimeSurvey credentials in `.env`
-3. Access to a LimeSurvey instance with survey data
+3. Access to a LimeSurvey instance
 
 ## Understanding the Pipeline
 
@@ -77,8 +75,8 @@ make run SNR=0123 GANZTAG=True AUDIENCE=elt YEAR=2026
 |-----------|-------------|----------------|
 | `SNR` | School number (zero-padded string) | `0001`, `0042`, `0123` |
 | `STYPE` | School type | `gy` (Gymnasium), `rs` (Realschule) |
-| `AUDIENCE` | Target audience | `sus` (students), `leh` (teachers), `elt` (parents), `ubb` (supervision), `all` |
-| `UBB` | UBB supervision mode | `True`, `False` |
+| `AUDIENCE` | Target audience | `sus` (students), `leh` (teachers), `elt` (parents), `ubb` (UBB), `all` |
+| `UBB` | UBB | `True`, `False` |
 | `GANZTAG` | Full-day school mode | `True`, `False` |
 | `HAS_N` | Available audience types (comma-separated) | `sus,leh`, `sus,leh,elt` |
 | `YEAR` | Report year | `2024`, `2025`, `2026` |
@@ -134,13 +132,6 @@ make clean
 
 This deletes everything under `res/` while preserving the directory structure.
 
-## Next Steps
-
-- Explore the [API Reference](../../reference/index.qmd) to understand the core classes and functions
-- Review the metadata CSV files in `pyreporter/data/` to customize report behavior
-- Examine the Quarto templates in `pyreporter/templates/` to modify report layout
-- Learn about the [MetaRepository](../../reference/MetaRepository.qmd) for managing metadata
-
 ## Common Issues
 
 ### LimeSurvey Connection Fails
@@ -161,12 +152,10 @@ Ensure all required CSV files exist in `pyreporter/data/`:
 - `meta_mastertotemplate.csv`
 - `meta_snames.csv`
 
-### Quarto Rendering Errors
 
-Verify Quarto is installed and accessible:
+## Next Steps
 
-```bash
-quarto --version
-```
-
-Check that `plots/` directory exists and contains the expected PDF files before rendering
+- Explore the [API Reference](../../reference/index.qmd) to understand the core classes and functions
+- Review the metadata CSV files in `pyreporter/data/` to customize report behavior
+- Examine the Quarto templates in `pyreporter/templates/` to modify report layout
+- Learn about the [MetaRepository](../../reference/MetaRepository.qmd) for managing metadata
