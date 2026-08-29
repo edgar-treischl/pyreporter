@@ -146,9 +146,9 @@ def main():
         use_cache=use_cache
     )
     
-    print(f"\n✅ Fetch complete:")
+    print(f"\n Fetch complete:")
     print(f"   - Raw data preview:\n{result['raw_data'].head()}")
-    print(f"\n✅ Fetch Summary:")
+    print(f"\n Summary:")
     print(f"   - School: {snr}")
     print(f"   - Year: {result['syear']}")
     print(f"   - Surveys: {len(result['sids_df'])}")

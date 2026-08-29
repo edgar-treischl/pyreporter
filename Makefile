@@ -1,4 +1,4 @@
-.PHONY: run fetch prepare plot clean clean-cache api api-dev help
+.PHONY: run fetch prepare plot test test-cov clean clean-cache clean-all api api-dev help
 
 # --- Default values (can be overridden) ---
 SNR ?= 0001
@@ -20,33 +20,43 @@ export HAS_N
 export YEAR
 export PLOT
 
+# --- Testing ---
+
+test:
+	@echo "🧪 Running tests..."
+	uv run pytest
+
+test-cov:
+	@echo "🧪 Running tests with coverage..."
+	uv run pytest --cov=pyreporter --cov-report=term-missing --cov-report=html
+
 # --- Pipeline targets ---
 
 fetch:
 	@echo "📡 Fetching raw data from LimeSurvey..."
-	poetry run python -m pyreporter.fetch
+	uv run python -m pyreporter.fetch
 
 prepare: fetch
 	@echo "🔧 Preparing data for plotting..."
-	poetry run python -m pyreporter.prepare
+	uv run python -m pyreporter.prepare
 
 plot: prepare
 	@echo "📊 Generating plots..."
-	poetry run python -m pyreporter.plot
+	uv run python -m pyreporter.plot
 
 run:
 	@echo "🚀 Running full pipeline..."
-	poetry run python -m pyreporter.run
+	uv run python -m pyreporter.run
 
 # --- API targets ---
 
 api:
 	@echo "🌐 Starting API server..."
-	poetry run uvicorn pyreporter.api:app --host 0.0.0.0 --port 8000
+	uv run uvicorn pyreporter.api:app --host 0.0.0.0 --port 8000
 
 api-dev:
 	@echo "🌐 Starting API server (development mode with auto-reload)..."
-	poetry run uvicorn pyreporter.api:app --reload --host 0.0.0.0 --port 8000
+	uv run uvicorn pyreporter.api:app --reload --host 0.0.0.0 --port 8000
 
 # --- Cleaning targets ---
 
@@ -74,7 +84,11 @@ clean-all: clean clean-cache
 help:
 	@echo "Available commands:"
 	@echo ""
-	@echo "Pipeline (modular with caching):"
+	@echo "Testing:"
+	@echo "  make test         Run test suite"
+	@echo "  make test-cov     Run tests with coverage report"
+	@echo ""
+	@echo "Pipeline:"
 	@echo "  make fetch        Download raw data from LimeSurvey (cached)"
 	@echo "  make prepare      Prepare plot-ready data (cached)"
 	@echo "  make plot         Generate all plots (or specify PLOT=name)"
@@ -86,6 +100,8 @@ help:
 	@echo "                    API docs at: http://localhost:8000/docs"
 	@echo ""
 	@echo "Examples:"
+	@echo "  make test"
+	@echo "  make test-cov"
 	@echo "  make fetch SNR=0001 UBB=True"
 	@echo "  make plot PLOT=A12 AUDIENCE=sus"
 	@echo "  make run SNR=0002 AUDIENCE=leh"
@@ -93,8 +109,8 @@ help:
 	@echo "Cleaning:"
 	@echo "  make clean        Delete generated reports (res/)"
 	@echo "  make clean-cache  Delete cached data (.cache/)"
-	@echo "  make clean-all    Delete everything (res/ + .cache/)"
+	@echo "  make clean-all   Delete everything (res/ + .cache/)"
 	@echo ""
 	@echo "Default parameters:"
 	@echo "  SNR=$(SNR) STYPE=$(STYPE) AUDIENCE=$(AUDIENCE)"
-	@echo "  UBB=$(UBB) GANZTAG=$(GANZTAG) HAS_N=$(HAS_N)"
+	@echo "  UBB=$(UBB) GANZTAG=$(GANZTAG) HAS_N=$(HAS_N) YEAR=$(YEAR)"
