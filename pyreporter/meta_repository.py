@@ -4,11 +4,35 @@ from typing import Optional, Iterable, Dict, Any
 
 
 class MetadataNotAvailableError(RuntimeError):
+    """Raised when metadata is not available."""
     pass
 
 
 class MetaRepository:
+    """Repository for loading and accessing metadata.
+
+    The repository loads metadata definitions from the package's
+    ``pyreporter.data`` directory.
+
+    Attributes
+    ----------
+    meta_templates : pandas.DataFrame
+        Metadata templates.
+    meta_reports : pandas.DataFrame
+        Metadata reports.
+    meta_sets : pandas.DataFrame
+        Metadata sets.
+    meta_headers : pandas.DataFrame
+        Metadata headers.
+    meta_mastertotemplate : pandas.DataFrame
+        Mapping between metadata masters and templates.
+    """
     def __init__(self):
+        """Initialize the metadata repository.
+
+        Loads the metadata CSV files bundled with the ``pyreporter``
+        package.
+        """
         data_dir = files("pyreporter.data")
 
         self.meta_templates = pd.read_csv(data_dir / "meta_templates.csv")
