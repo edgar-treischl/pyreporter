@@ -1805,12 +1805,14 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "ipykernel" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "syrupy" },
 ]
 docs = [
     { name = "great-docs" },
+]
+test = [
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "syrupy" },
 ]
 
 [package.metadata]
@@ -1831,13 +1833,13 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "ipykernel", specifier = ">=7.2" },
-    { name = "pytest", specifier = ">=8" },
-    { name = "pytest-cov", specifier = ">=7" },
-    { name = "syrupy", specifier = ">=4" },
-]
+dev = [{ name = "ipykernel", specifier = ">=7.2" }]
 docs = [{ name = "great-docs", specifier = ">=0.9,<0.10" }]
+test = [
+    { name = "pytest", specifier = ">=9" },
+    { name = "pytest-cov", specifier = ">=7" },
+    { name = "syrupy", specifier = ">=6" },
+]
 
 [[package]]
 name = "pytest"
