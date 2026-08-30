@@ -4,3 +4,4 @@ from .limer import limer_connect, limer_sessionkey, limer_call, limer_list_surve
 
 from .utils import get_metadata
 from .plot import create_plotlist
+from .fetch import fetch_raw_data

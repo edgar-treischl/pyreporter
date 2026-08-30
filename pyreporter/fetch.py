@@ -64,7 +64,7 @@ def fetch_raw_data(
         if cached is not None:
             return cached
     
-    print(f"\n📡 Fetching data from LimeSurvey for SNR={snr}, UBB={ubb}...")
+    print(f"\n Fetching data from LimeSurvey for SNR={snr}, UBB={ubb}...")
     
     # Connect to LimeSurvey
     limer_connect()
@@ -95,7 +95,6 @@ def fetch_raw_data(
         print(f"   Downloaded {len(raw_data)} response rows")
         
     finally:
-        # Always release the session
         limer_release()
     
     # Package results

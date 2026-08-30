@@ -61,9 +61,8 @@ def main(
     print_config(snr, stype, audience, ubb, ganztag, has_N, year)
 
     # --- Step 1: Fetch raw data ---
-    print("\n" + "="*60)
-    print("STEP 1: FETCH RAW DATA")
-    print("="*60)
+    print("\n[1/6] Fetch data from LimeSurvey/Cache")
+
     
     fetch_result = fetch_raw_data(
         snr=snr,
@@ -82,9 +81,8 @@ def main(
     print(f"✓ Fetched {len(raw_data)} response rows")
 
     # --- Step 2: Prepare data ---
-    print("\n" + "="*60)
-    print("STEP 2: PREPARE DATA")
-    print("="*60)
+    print("\n[2/6] Prepare data")
+
     
     prepared = prepare_data(
         snr=snr,
@@ -104,17 +102,13 @@ def main(
     print(f"✓ Prepared {len(prepared['plot_data'])} plots")
 
     # --- Step 3: Create directories ---
-    print("\n" + "="*60)
-    print("STEP 3: SETUP OUTPUT DIRECTORY")
-    print("="*60)
-    
+    print("\n[3/6] Setup output directory")
+
     create_directories(snr=snr, audience=audience, ubb=ubb, syear=syear)
     print(f"✓ Created directory structure in res/{snr}_{syear}/")
 
     # --- Step 4: Generate plots ---
-    print("\n" + "="*60)
-    print("STEP 4: GENERATE PLOTS")
-    print("="*60)
+    print("\n[4/6] Generate Plots")
     
     create_plotlist(
         meta_list=report_meta['meta'],
@@ -130,9 +124,7 @@ def main(
     print(f"✓ Generated {len(report_meta['meta'])} plots")
 
     # --- Step 5: Render PDF ---
-    print("\n" + "="*60)
-    print("STEP 5: RENDER PDF")
-    print("="*60)
+    print("\n[5/6] Render PDF PLOTS")
     
     render_pdf(
         audience=audience,
@@ -144,20 +136,14 @@ def main(
         header_report=header_report
     )
     
-    print(f"✓ Rendered PDF report")
 
     # --- Step 6: Clean temporary files ---
-    print("\n" + "="*60)
-    print("STEP 6: CLEANUP")
-    print("="*60)
-    
+    print("\n[6/6] CLEANUP")
+
     tmpdir = get_directory(snr=snr, syear=syear)
     clean_files(where=tmpdir)
     
-    print("\n" + "="*60)
-    print("✅ PIPELINE COMPLETE!")
-    print("="*60)
-    print(f"\nReport saved to: {tmpdir}/{snr}_results_{audience}.pdf")
+    print(f"\n ✅ Report saved to: {tmpdir}/{snr}_results_{audience}.pdf")
 
 
 if __name__ == "__main__":

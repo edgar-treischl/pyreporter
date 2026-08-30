@@ -1,6 +1,3 @@
-import pandas as pd
-
-data = pd.read_pickle("tests/fake_data_0001.pkl")
-data.to_csv("fake_data_delete.csv", index=False)
-
-print("\nWrote fake_data_0001.csv")
+print("\n" + "="*60)
+print("STEP 3: SETUP OUTPUT DIRECTORY")
+print("="*60)
