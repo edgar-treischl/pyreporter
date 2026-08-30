@@ -154,17 +154,3 @@ github_style: icon
 
 exclude:
   - app
-  - PipelineRequest
-  - PlotRequest
-  - ReportRequest
-  - RawDataResponse
-  - PreparedDataResponse
-  - PlotResponse
-  - ReportResponse
-  - root
-  - health_check
-  - get_raw_data
-  - get_prepared_data
-  - generate_plot
-  - create_report
-  - list_available_plots
